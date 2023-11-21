@@ -1,3 +1,5 @@
+import Custom from "../styles/Home.module.css";
+
 export default function Crud() {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -12,6 +14,7 @@ export default function Crud() {
         onChange={handleChange}
         name="Name"
       />
+      <h1 className={Custom.Header}>Hello</h1>
     </div>
   );
 }
