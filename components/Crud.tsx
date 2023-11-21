@@ -14,7 +14,7 @@ export default function Crud() {
         onChange={handleChange}
         name="Name"
       />
-      <h1 className={Custom.Header}>Hello</h1>
+      <h1 className={Custom.Header}>Git POC-f1</h1>
     </div>
   );
 }
