@@ -1,17 +1,33 @@
-import Crud from "../components/Crud";
-import Button from "@mui/material/Button";
-import Head from "next/head";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
-export default function index() {
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push(`/login/${username}`);
+  };
+
   return (
     <div>
-      <Head>
-        <title>Banking Application</title>
-      </Head>
-      <Crud />
-      <Button variant="contained" href="#contained-buttons">
-        Link
-      </Button>
+      <h2>Login</h2>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={handleLogin}>Log In</button>
     </div>
   );
-}
+};
+
+export default Login;
