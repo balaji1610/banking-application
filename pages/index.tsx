@@ -1,5 +1,6 @@
 import Crud from "../components/Crud";
 import Button from "@mui/material/Button";
+import Head from "next/head";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 export default function index() {
@@ -25,6 +26,9 @@ export default function index() {
   });
   return (
     <div>
+      <Head>
+        <title>Banking Application</title>
+      </Head>
       <Crud />
       <Button variant="contained" href="#contained-buttons">
         Link
@@ -71,7 +75,6 @@ export default function index() {
 
         <button type="submit">Submit</button>
       </form>
-
     </div>
   );
 }
