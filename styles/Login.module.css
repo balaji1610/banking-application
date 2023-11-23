@@ -21,3 +21,6 @@
 .input_align {
   text-align: center;
 }
+.ErrorMessage {
+  color: red;
+}

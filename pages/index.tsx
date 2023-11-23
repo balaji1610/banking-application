@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import LoginStyle from "../styles/Login.module.css";
 import Head from "next/head";
 export default function Login() {
@@ -21,7 +23,23 @@ export default function Login() {
 
     setcredentials({ ...credentials, [name]: value });
   };
-  const { username, password } = credentials;
+
+  //Formik
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Required"),
+      password: Yup.string().required("Required"),
+    }),
+    onSubmit: (values) => {
+      const { username, password } = values;
+
+      router.push(`/login/${username.split("@")[0]}`);
+    },
+  });
 
   return (
     <div>
@@ -38,47 +56,55 @@ export default function Login() {
         <Grid item xs={3}></Grid>
         <Grid item xs={6}>
           <div className={LoginStyle.Card}>
-            <div className={LoginStyle.LoginGrid}>
-              <div className={LoginStyle.login_align}>
-                <h1>Login</h1>
+            <form onSubmit={formik.handleSubmit}>
+              <div className={LoginStyle.LoginGrid}>
+                <div className={LoginStyle.login_align}>
+                  <h1>Login</h1>
+                </div>
+                <div className={LoginStyle.input_align}>
+                  {" "}
+                  <TextField
+                    id="outlined-basic"
+                    label="UserName"
+                    variant="outlined"
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                    value={formik.values.username}
+                    onChange={formik.handleChange}
+                  />
+                  {formik.touched.username && formik.errors.username ? (
+                    <div className={LoginStyle.ErrorMessage}>
+                      {formik.errors.username}
+                    </div>
+                  ) : null}
+                </div>
+                <div className={LoginStyle.input_align}>
+                  {" "}
+                  <TextField
+                    id="outlined-basic"
+                    label="Password"
+                    variant="outlined"
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                  />
+                  {formik.touched.password && formik.errors.password ? (
+                    <div className={LoginStyle.ErrorMessage}>
+                      {formik.errors.password}
+                    </div>
+                  ) : null}
+                </div>
+                <div className={LoginStyle.input_align}>
+                  {" "}
+                  <Button type="submit" variant="contained" color="primary">
+                    Log In
+                  </Button>
+                </div>
               </div>
-              <div className={LoginStyle.input_align}>
-                {" "}
-                <TextField
-                  id="outlined-basic"
-                  label="UserName"
-                  variant="outlined"
-                  type="text"
-                  placeholder="Username"
-                  name="username"
-                  value={username}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className={LoginStyle.input_align}>
-                {" "}
-                <TextField
-                  id="outlined-basic"
-                  label="Password"
-                  variant="outlined"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={password}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className={LoginStyle.input_align}>
-                {" "}
-                <Button
-                  onClick={handleLogin}
-                  variant="contained"
-                  color="primary"
-                >
-                  Log In
-                </Button>
-              </div>
-            </div>
+            </form>
           </div>
         </Grid>
         <Grid item xs={3}></Grid>
