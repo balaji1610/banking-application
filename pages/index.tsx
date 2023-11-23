@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Button from "@mui/material/Button";
 
-const Login = () => {
+export default function Login() {
   const [credentials, setcredentials] = useState({
     username: "",
     password: "",
@@ -9,7 +10,7 @@ const Login = () => {
   const router = useRouter();
 
   const handleLogin = () => {
-    router.push(`/login/${credentials.username}`);
+    router.push(`/login/${credentials.username.split("@")[0]}`);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,10 +37,10 @@ const Login = () => {
         value={password}
         onChange={handleChange}
       />
-      <button onClick={handleLogin}>Log In</button>
-      <hr />
+
+      <Button onClick={handleLogin} variant="contained" color="primary">
+        Log In
+      </Button>
     </div>
   );
-};
-
-export default Login;
+}
