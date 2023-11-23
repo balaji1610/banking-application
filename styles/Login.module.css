@@ -1,0 +1,23 @@
+.Card {
+  background-color: #ffffff;
+  border: 2px solid blue;
+
+  margin-top: 10vh;
+}
+
+.LoginGrid {
+  display: grid;
+  grid-template-columns: 50vh;
+  padding: 20px;
+  grid-template-rows: auto auto auto auto;
+  grid-row-gap: 5vh;
+}
+
+.login_align {
+  text-align: center;
+  color: black;
+}
+
+.input_align {
+  text-align: center;
+}

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
+import LoginStyle from "../styles/Login.module.css";
 export default function Login() {
   const [credentials, setcredentials] = useState({
     username: "",
@@ -32,32 +33,48 @@ export default function Login() {
       >
         <Grid item xs={3}></Grid>
         <Grid item xs={6}>
-          <div>
-            <TextField
-              id="outlined-basic"
-              label="UserName"
-              variant="outlined"
-              type="text"
-              placeholder="Username"
-              name="username"
-              value={username}
-              onChange={handleChange}
-            />
-
-            <TextField
-              id="outlined-basic"
-              label="Password"
-              variant="outlined"
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-            />
-
-            <Button onClick={handleLogin} variant="contained" color="primary">
-              Log In
-            </Button>
+          <div className={LoginStyle.Card}>
+            <div className={LoginStyle.LoginGrid}>
+              <div className={LoginStyle.login_align}>
+                <h1>Login</h1>
+              </div>
+              <div className={LoginStyle.input_align}>
+                {" "}
+                <TextField
+                  id="outlined-basic"
+                  label="UserName"
+                  variant="outlined"
+                  type="text"
+                  placeholder="Username"
+                  name="username"
+                  value={username}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className={LoginStyle.input_align}>
+                {" "}
+                <TextField
+                  id="outlined-basic"
+                  label="Password"
+                  variant="outlined"
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={password}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className={LoginStyle.input_align}>
+                {" "}
+                <Button
+                  onClick={handleLogin}
+                  variant="contained"
+                  color="primary"
+                >
+                  Log In
+                </Button>
+              </div>
+            </div>
           </div>
         </Grid>
         <Grid item xs={3}></Grid>

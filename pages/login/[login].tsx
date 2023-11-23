@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-
+import Button from "@mui/material/Button";
 const Login = () => {
   const router = useRouter();
   const getId = router.query.login;
@@ -8,8 +8,10 @@ const Login = () => {
   };
   return (
     <div>
-      <h1>Welcome login{getId}</h1>
-      <button onClick={handleLogout}>Log out</button>
+      <h1>Welcome login &nbsp;{getId}</h1>
+      <Button onClick={handleLogout} variant="contained" color="error">
+        Log out
+      </Button>
     </div>
   );
 };
