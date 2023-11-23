@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import LoginStyle from "../styles/Login.module.css";
+import Head from "next/head";
 export default function Login() {
   const [credentials, setcredentials] = useState({
     username: "",
@@ -24,6 +25,9 @@ export default function Login() {
 
   return (
     <div>
+      <Head>
+        <title>Banking Application</title>
+      </Head>
       <Grid
         container
         direction="column"
