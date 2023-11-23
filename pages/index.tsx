@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
-
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 export default function Login() {
   const [credentials, setcredentials] = useState({
     username: "",
@@ -22,25 +23,45 @@ export default function Login() {
 
   return (
     <div>
-      <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        name="username"
-        value={username}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        name="password"
-        value={password}
-        onChange={handleChange}
-      />
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={2}
+      >
+        <Grid item xs={3}></Grid>
+        <Grid item xs={6}>
+          <div>
+            <TextField
+              id="outlined-basic"
+              label="UserName"
+              variant="outlined"
+              type="text"
+              placeholder="Username"
+              name="username"
+              value={username}
+              onChange={handleChange}
+            />
 
-      <Button onClick={handleLogin} variant="contained" color="primary">
-        Log In
-      </Button>
+            <TextField
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+
+            <Button onClick={handleLogin} variant="contained" color="primary">
+              Log In
+            </Button>
+          </div>
+        </Grid>
+        <Grid item xs={3}></Grid>
+      </Grid>
     </div>
   );
 }
