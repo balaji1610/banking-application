@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import Createaccount from "../Container/Createaccount";
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter();
-  const [Banking, setBanking] = useState(() => {
-    return JSON.parse(localStorage.getItem("Banking")) || [];
-  });
-  const [items, setItems] = useState(-1);
 
-  useEffect(() => {
-    localStorage.setItem("Banking", JSON.stringify(Banking));
-  }, [items]);
+const Login = () => {
+  const [credentials, setcredentials] = useState({
+    username: "",
+    password: "",
+  });
+  const router = useRouter();
+
   const handleLogin = () => {
-    setBanking([...Banking, { name: username, pwd: password }]);
-    setItems(items + 1);
-    router.push(`/login/${username}`);
+    router.push(`/login/${credentials.username}`);
   };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    setcredentials({ ...credentials, [name]: value });
+  };
+  const { username, password } = credentials;
 
   return (
     <div>
@@ -25,20 +25,19 @@ const Login = () => {
       <input
         type="text"
         placeholder="Username"
+        name="username"
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={handleChange}
       />
       <input
         type="password"
         placeholder="Password"
+        name="password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={handleChange}
       />
       <button onClick={handleLogin}>Log In</button>
       <hr />
-      <div>
-        <Createaccount value={Banking} />
-      </div>
     </div>
   );
 };
