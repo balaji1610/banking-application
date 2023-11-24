@@ -8,6 +8,9 @@ import * as Yup from "yup";
 import LoginStyle from "../styles/Login.module.css";
 import fontStyle from "../styles/fontStyle.module.css";
 import Head from "next/head";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 export default function Login() {
   const [credentials, setcredentials] = useState({
     username: "",
@@ -59,6 +62,14 @@ export default function Login() {
           <div className={LoginStyle.Card}>
             <form onSubmit={formik.handleSubmit}>
               <div className={LoginStyle.LoginGrid}>
+                <div className={LoginStyle.IconStyle}>
+                  <img
+                    width="96"
+                    height="96"
+                    src="https://img.icons8.com/fluency/96/user-male-circle--v1.png"
+                    alt="user-male-circle--v1"
+                  />
+                </div>
                 <div className={LoginStyle.login_align}>
                   <h1 className={fontStyle.login_font}>Login</h1>
                 </div>
@@ -66,10 +77,13 @@ export default function Login() {
                   {" "}
                   <TextField
                     id="outlined-basic"
-                    label="UserName"
+                    label="UserName*"
+                    style={{
+                      width: "330px",
+                    }}
                     variant="outlined"
                     type="text"
-                    placeholder="Username"
+                    placeholder="Username*"
                     name="username"
                     value={formik.values.username}
                     onChange={formik.handleChange}
@@ -84,11 +98,14 @@ export default function Login() {
                   {" "}
                   <TextField
                     id="outlined-basic"
-                    label="Password"
+                    label="Password*"
                     variant="outlined"
                     type="password"
                     placeholder="Password"
                     name="password"
+                    style={{
+                      width: "330px",
+                    }}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                   />
@@ -100,7 +117,12 @@ export default function Login() {
                 </div>
                 <div className={LoginStyle.input_align}>
                   {" "}
-                  <Button type="submit" variant="contained" color="primary">
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    endIcon={<ExitToAppIcon />}
+                  >
                     Log In
                   </Button>
                 </div>
