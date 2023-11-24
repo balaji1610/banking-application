@@ -9,9 +9,11 @@ import LoginStyle from "../styles/Login.module.css";
 import fontStyle from "../styles/fontStyle.module.css";
 import Head from "next/head";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 export default function Login() {
+  const mobile = useMediaQuery("(min-width:600px)");
+  console.log(mobile);
   const [credentials, setcredentials] = useState({
     username: "",
     password: "",
@@ -48,7 +50,9 @@ export default function Login() {
   });
 
   return (
-    <div className={LoginStyle.ParentDiv}>
+    <div
+      className={mobile ? LoginStyle.ParentDiv : LoginStyle.ParentDiv_mobile}
+    >
       <Head>
         <title>Banking Application</title>
       </Head>
@@ -61,7 +65,7 @@ export default function Login() {
       >
         <Grid item xs={3}></Grid>
         <Grid item xs={6}>
-          <div className={LoginStyle.Card}>
+          <div className={mobile ? LoginStyle.Card : LoginStyle.Card_mobile}>
             <form onSubmit={formik.handleSubmit}>
               <div className={LoginStyle.LoginGrid}>
                 <div className={LoginStyle.IconStyle}>
@@ -103,6 +107,9 @@ export default function Login() {
                   {" "}
                   <TextField
                     id="outlined-basic"
+                    type="password"
+                    placeholder="Password"
+                    name="password"
                     inputProps={{
                       style: {
                         width: "330px",
@@ -111,9 +118,6 @@ export default function Login() {
                           "2px solid red",
                       },
                     }}
-                    type="password"
-                    placeholder="Password"
-                    name="password"
                     value={formik.values.password}
                     onChange={formik.handleChange}
                   />
