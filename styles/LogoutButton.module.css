@@ -4,4 +4,17 @@
   justify-content: space-between;
   align-items: center;
   height: 10vh;
+  border-bottom: 2px solid black;
+}
+
+.user_imageFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.user_name {
+  margin-top: 14px;
+  font-size: 24px;
+  color: #ff5600eb;
 }
