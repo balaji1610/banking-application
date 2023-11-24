@@ -34,10 +34,12 @@ export default function Login() {
       username: "",
       password: "",
     },
+
     validationSchema: Yup.object({
       username: Yup.string().required("Required"),
       password: Yup.string().required("Required"),
     }),
+
     onSubmit: (values) => {
       const { username, password } = values;
 
@@ -78,10 +80,15 @@ export default function Login() {
                   <TextField
                     id="outlined-basic"
                     label="UserName*"
-                    style={{
-                      width: "330px",
+                    inputProps={{
+                      style: {
+                        width: "330px",
+                        borderBottom:
+                          formik.errors.username == "Required" &&
+                          "2px solid red",
+                      },
                     }}
-                    variant="outlined"
+                    variant="filled"
                     type="text"
                     placeholder="Username*"
                     name="username"
@@ -99,12 +106,17 @@ export default function Login() {
                   <TextField
                     id="outlined-basic"
                     label="Password*"
-                    variant="outlined"
+                    variant="filled"
                     type="password"
                     placeholder="Password"
                     name="password"
-                    style={{
-                      width: "330px",
+                    inputProps={{
+                      style: {
+                        width: "330px",
+                        borderBottom:
+                          formik.errors.password == "Required" &&
+                          "2px solid red",
+                      },
                     }}
                     value={formik.values.password}
                     onChange={formik.handleChange}
