@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import LoginStyle from "../styles/Login.module.css";
+import fontStyle from "../styles/fontStyle.module.css";
 import Head from "next/head";
 export default function Login() {
   const [credentials, setcredentials] = useState({
@@ -42,7 +43,7 @@ export default function Login() {
   });
 
   return (
-    <div>
+    <div className={LoginStyle.ParentDiv}>
       <Head>
         <title>Banking Application</title>
       </Head>
@@ -59,7 +60,7 @@ export default function Login() {
             <form onSubmit={formik.handleSubmit}>
               <div className={LoginStyle.LoginGrid}>
                 <div className={LoginStyle.login_align}>
-                  <h1>Login</h1>
+                  <h1 className={fontStyle.login_font}>Login</h1>
                 </div>
                 <div className={LoginStyle.input_align}>
                   {" "}
