@@ -1,0 +1,8 @@
+.ContentBoard_Parent {
+  background-color: #ffffff;
+  border: 1px solid black;
+  display: grid;
+  grid-gap: 25px;
+  gap: 25px;
+  grid-template-rows: 2fr 16fr;
+}

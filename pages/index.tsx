@@ -13,7 +13,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 export default function Login() {
   const mobile = useMediaQuery("(min-width:600px)");
-  console.log(mobile);
+
   const [credentials, setcredentials] = useState({
     username: "",
     password: "",
