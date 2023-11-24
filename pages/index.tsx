@@ -79,16 +79,14 @@ export default function Login() {
                   {" "}
                   <TextField
                     id="outlined-basic"
-                    label="UserName*"
                     inputProps={{
                       style: {
                         width: "330px",
-                        borderBottom:
+                        border:
                           formik.errors.username == "Required" &&
                           "2px solid red",
                       },
                     }}
-                    variant="filled"
                     type="text"
                     placeholder="Username*"
                     name="username"
@@ -105,19 +103,17 @@ export default function Login() {
                   {" "}
                   <TextField
                     id="outlined-basic"
-                    label="Password*"
-                    variant="filled"
-                    type="password"
-                    placeholder="Password"
-                    name="password"
                     inputProps={{
                       style: {
                         width: "330px",
-                        borderBottom:
+                        border:
                           formik.errors.password == "Required" &&
                           "2px solid red",
                       },
                     }}
+                    type="password"
+                    placeholder="Password"
+                    name="password"
                     value={formik.values.password}
                     onChange={formik.handleChange}
                   />
