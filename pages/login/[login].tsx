@@ -13,7 +13,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#DBD4B4" }}>
       <Head>
         <title>Dashboard</title>
       </Head>{" "}

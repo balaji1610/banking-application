@@ -4,7 +4,7 @@
   display: grid;
   grid-gap: 25px;
   gap: 25px;
-  grid-template-rows: 2fr 16fr;
+  grid-template-rows: 2fr 17fr;
 }
 
 .AddBtn_style {
