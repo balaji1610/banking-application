@@ -19,10 +19,22 @@ export default function AddForm({ handleClose }) {
     },
 
     validationSchema: Yup.object({
-      fistname: Yup.string().required("Required"),
-      lastname: Yup.string().required("Required"),
-      email: Yup.string().required("Required"),
-      mobile: Yup.string().required("Required"),
+      fistname: Yup.string()
+        .matches(/^[a-zA-Z]+$/, "fistname must only contain letters")
+        .min(2, "Too short")
+        .max(15, "Too long")
+        .required("Required"),
+
+      lastname: Yup.string()
+        .matches(/^[a-zA-Z]+$/, "lastname must only contain letters")
+        .min(1, "Too short")
+        .max(10, "Too long")
+
+        .required("Required"),
+      email: Yup.string().email("Invalid email").required("Required"),
+      mobile: Yup.string()
+        .matches(/^\d{10}$/, "Invalid mobile number")
+        .required("Required"),
     }),
 
     onSubmit: (values) => {
@@ -31,21 +43,24 @@ export default function AddForm({ handleClose }) {
       setTableArray([values, ...TableArray]);
     },
   });
+  console.log(formik.errors, "formik.errors");
+
+  const { values, handleSubmit, touched, errors, handleChange } = formik;
   return (
     <>
       {" "}
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className={AddFromStyle.Addform_Parent}>
           <div>
             <TextField
               type="text"
               placeholder="Fistname*"
               name="fistname"
-              value={formik.values.fistname}
+              value={values.fistname}
               onChange={formik.handleChange}
             />
-            {formik.touched.fistname && formik.errors.fistname ? (
-              <div>{formik.errors.fistname}</div>
+            {touched.fistname && errors.fistname ? (
+              <div>{errors.fistname}</div>
             ) : null}
           </div>
           <div>
@@ -54,9 +69,12 @@ export default function AddForm({ handleClose }) {
               type="text"
               placeholder="Lastname*"
               name="lastname"
-              value={formik.values.lastname}
-              onChange={formik.handleChange}
+              value={values.lastname}
+              onChange={handleChange}
             />
+            {touched.lastname && errors.lastname ? (
+              <div>{errors.lastname}</div>
+            ) : null}
           </div>
           <div>
             {" "}
@@ -64,9 +82,10 @@ export default function AddForm({ handleClose }) {
               type="email"
               placeholder="Email*"
               name="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
+              value={values.email}
+              onChange={handleChange}
             />
+            {touched.email && errors.email ? <div>{errors.email}</div> : null}
           </div>
           <div>
             {" "}
@@ -74,9 +93,12 @@ export default function AddForm({ handleClose }) {
               type="text"
               placeholder="Mobile*"
               name="mobile"
-              value={formik.values.mobile}
-              onChange={formik.handleChange}
+              value={values.mobile}
+              onChange={handleChange}
             />
+            {touched.mobile && errors.mobile ? (
+              <div>{errors.mobile}</div>
+            ) : null}
           </div>
           <div>
             <Button variant="contained" onClick={handleClose} color="error">
