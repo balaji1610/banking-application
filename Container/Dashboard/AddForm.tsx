@@ -46,6 +46,7 @@ export default function AddForm({ handleClose }) {
   console.log(formik.errors, "formik.errors");
 
   const { values, handleSubmit, touched, errors, handleChange } = formik;
+
   return (
     <>
       {" "}
@@ -58,10 +59,9 @@ export default function AddForm({ handleClose }) {
               name="fistname"
               value={values.fistname}
               onChange={formik.handleChange}
+              helperText={touched.fistname && formik.errors.fistname}
+              error={touched.fistname && Boolean(errors.fistname)}
             />
-            {touched.fistname && errors.fistname ? (
-              <div>{errors.fistname}</div>
-            ) : null}
           </div>
           <div>
             {" "}
@@ -71,10 +71,9 @@ export default function AddForm({ handleClose }) {
               name="lastname"
               value={values.lastname}
               onChange={handleChange}
+              helperText={touched.lastname && formik.errors.lastname}
+              error={touched.lastname && Boolean(errors.lastname)}
             />
-            {touched.lastname && errors.lastname ? (
-              <div>{errors.lastname}</div>
-            ) : null}
           </div>
           <div>
             {" "}
@@ -84,8 +83,9 @@ export default function AddForm({ handleClose }) {
               name="email"
               value={values.email}
               onChange={handleChange}
+              helperText={touched.email && formik.errors.email}
+              error={touched.email && Boolean(errors.email)}
             />
-            {touched.email && errors.email ? <div>{errors.email}</div> : null}
           </div>
           <div>
             {" "}
@@ -95,10 +95,9 @@ export default function AddForm({ handleClose }) {
               name="mobile"
               value={values.mobile}
               onChange={handleChange}
+              helperText={touched.mobile && formik.errors.mobile}
+              error={touched.mobile && Boolean(errors.mobile)}
             />
-            {touched.mobile && errors.mobile ? (
-              <div>{errors.mobile}</div>
-            ) : null}
           </div>
           <div>
             <Button variant="contained" onClick={handleClose} color="error">
