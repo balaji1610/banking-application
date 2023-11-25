@@ -6,7 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import { useContext } from "react";
+import { ApplicationProps } from "../../ContextAPI/Context";
 function createData(
   name: string,
   calories: number,
@@ -26,34 +27,29 @@ const rows = [
 ];
 
 export default function BasicTable() {
+  const { TableArray } = useContext(ApplicationProps);
+
+  console.log(TableArray);
   return (
     <TableContainer component={Paper}>
-      <Table
-        sx={{ minWidth: 650, border: "2px solid black" }}
-        aria-label="simple table"
-      >
+      <Table sx={{ minWidth: 650, border: "2px solid black" }}>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Fist Name </TableCell>
+            <TableCell>Last Name</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Mobile</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
+          {TableArray.map((el) => (
+            <TableRow>
               <TableCell component="th" scope="row">
-                {row.name}
+                {el.fistname}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell>{el.lastname}</TableCell>
+              <TableCell>{el.email}</TableCell>
+              <TableCell>{el.mobile}</TableCell>
             </TableRow>
           ))}
         </TableBody>

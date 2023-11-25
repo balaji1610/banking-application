@@ -83,25 +83,18 @@ export default function Login() {
                   {" "}
                   <TextField
                     id="outlined-basic"
-                    inputProps={{
-                      style: {
-                        width: "330px",
-                        border:
-                          formik.errors.username == "Required" &&
-                          "2px solid red",
-                      },
-                    }}
                     type="text"
                     placeholder="Username*"
                     name="username"
                     value={formik.values.username}
                     onChange={formik.handleChange}
+                    helperText={
+                      formik.touched.username && formik.errors.username
+                    }
+                    error={
+                      formik.touched.username && Boolean(formik.errors.username)
+                    }
                   />
-                  {formik.touched.username && formik.errors.username ? (
-                    <div className={LoginStyle.ErrorMessage}>
-                      {formik.errors.username}
-                    </div>
-                  ) : null}
                 </div>
                 <div className={LoginStyle.input_align}>
                   {" "}
@@ -110,22 +103,15 @@ export default function Login() {
                     type="password"
                     placeholder="Password"
                     name="password"
-                    inputProps={{
-                      style: {
-                        width: "330px",
-                        border:
-                          formik.errors.password == "Required" &&
-                          "2px solid red",
-                      },
-                    }}
                     value={formik.values.password}
                     onChange={formik.handleChange}
+                    helperText={
+                      formik.touched.password && formik.errors.password
+                    }
+                    error={
+                      formik.touched.password && Boolean(formik.errors.password)
+                    }
                   />
-                  {formik.touched.password && formik.errors.password ? (
-                    <div className={LoginStyle.ErrorMessage}>
-                      {formik.errors.password}
-                    </div>
-                  ) : null}
                 </div>
                 <div className={LoginStyle.input_align}>
                   {" "}
