@@ -6,3 +6,13 @@
   gap: 25px;
   grid-template-rows: 2fr 16fr;
 }
+
+.AddBtn_style {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.Table_style {
+  padding: 10px;
+  margin-top: 30px;
+}

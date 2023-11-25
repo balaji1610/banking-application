@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Grid from "@mui/material/Grid";
 import LogoutButton from "../../Container/Dashboard/LogoutButton";
 import ContentBoardStyle from "../../styles/ContenBoard.module.css";
+import ContentBoard from "../../Container/Dashboard/ContentBoard";
 const Login = () => {
   const router = useRouter();
   const getId = router.query.login;
@@ -22,7 +23,7 @@ const Login = () => {
               <LogoutButton handleLogout={handleLogout} getId={getId} />
             </div>
             <div>
-              <h1>Contend_page</h1>
+              <ContentBoard />
             </div>
           </div>
         </Grid>
