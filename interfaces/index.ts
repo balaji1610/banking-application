@@ -5,6 +5,12 @@
 // import { User } from 'path/to/interfaces';
 
 export type User = {
-  id: number
-  name: string
-}
+  id: number;
+  name: string;
+};
+
+export type ModelProps = {
+  open: boolean;
+  title?: string;
+  handleClose: () => void;
+};

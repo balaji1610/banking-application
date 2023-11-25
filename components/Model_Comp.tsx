@@ -1,11 +1,8 @@
 import { Grid } from "@mui/material";
 import Import_Material from "../utils/Import_Material";
 import AddFromStyle from "../styles/AddFrom.module.css";
-type ModelProps = {
-  open: boolean;
-  title?: string;
-  handleClose: () => void;
-};
+import { ModelProps } from "../interfaces/index";
+
 export default function Model_Comp({ open, handleClose, title }: ModelProps) {
   //all imports
   const {
