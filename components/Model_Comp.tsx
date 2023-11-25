@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import Import_Material from "../utils/Import_Material";
-import AddFromStyle from "../styles/AddFrom.module.css";
-import { ModelProps } from "../interfaces/index";
 
+import { ModelProps } from "../interfaces/index";
+import AddFrom from "../Container/Dashboard/AddForm";
 export default function Model_Comp({ open, handleClose, title }: ModelProps) {
   //all imports
   const {
@@ -23,28 +23,7 @@ export default function Model_Comp({ open, handleClose, title }: ModelProps) {
       >
         <DialogActions>
           <Grid container xs={12}>
-            <div className={AddFromStyle.Addform_Parent}>
-              <div>
-                <TextField />
-              </div>
-              <div>
-                {" "}
-                <TextField />
-              </div>
-              <div>
-                {" "}
-                <TextField />
-              </div>
-              <div>
-                {" "}
-                <TextField />
-              </div>
-              <div>
-                <Button variant="contained" onClick={handleClose}>
-                  Cancel
-                </Button>
-              </div>
-            </div>
+            <AddFrom handleClose={handleClose} />
           </Grid>{" "}
         </DialogActions>
       </Dialog>
