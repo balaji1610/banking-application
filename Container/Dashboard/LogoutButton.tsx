@@ -1,6 +1,12 @@
+import { useContext } from "react";
+import { ApplicationProps } from "../../ContextAPI/Context";
 import Button from "@mui/material/Button";
 import LogoutButtonStyle from "../../styles/LogoutButton.module.css";
+
 export default function LogoutButton({ handleLogout, getId }) {
+  const { TableArray } = useContext(ApplicationProps);
+
+  console.log(TableArray);
   return (
     <div className={LogoutButtonStyle.LogoutButtonStyle_flex}>
       <div>
