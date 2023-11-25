@@ -1,25 +1,26 @@
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import { Grid } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
-
+import Import_Material from "../utils/Import_Material";
 type ModelProps = {
   open: boolean;
   title?: string;
   handleClose: () => void;
 };
 export default function Model_Comp({ open, handleClose, title }: ModelProps) {
-  const mobile = useMediaQuery("(min-width:600px)");
+  //all imports
+  const {
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+  } = Import_Material;
   return (
     <div>
       <Dialog
         open={open}
         fullWidth
-        maxWidth="sm"
+        maxWidth="xs"
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
@@ -38,16 +39,16 @@ export default function Model_Comp({ open, handleClose, title }: ModelProps) {
         </DialogContent>
         <DialogActions>
           <Grid container xs={12}>
-            <Grid item xs={mobile ? 3 : 2}></Grid>
-            <Grid item xs={mobile ? 3 : 4}>
+            <Grid item xs={3}></Grid>
+            <Grid item xs={3}>
               <Button variant="contained" color="error"></Button>
             </Grid>
-            <Grid item xs={mobile ? 3 : 4}>
+            <Grid item xs={3}>
               <Button variant="contained" onClick={handleClose}>
                 Cancel
               </Button>
             </Grid>
-            <Grid item xs={mobile ? 3 : 2}></Grid>
+            <Grid item xs={3}></Grid>
           </Grid>{" "}
         </DialogActions>
       </Dialog>

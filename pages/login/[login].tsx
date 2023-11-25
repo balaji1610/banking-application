@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import LogoutButton from "../../Container/Dashboard/LogoutButton";
 import ContentBoardStyle from "../../styles/ContenBoard.module.css";
 import ContentBoard from "../../Container/Dashboard/ContentBoard";
+import Head from "next/head";
 const Login = () => {
   const router = useRouter();
   const getId = router.query.login;
@@ -12,6 +13,9 @@ const Login = () => {
 
   return (
     <div>
+      <Head>
+        <title>Dashboard</title>
+      </Head>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           Sidbar
