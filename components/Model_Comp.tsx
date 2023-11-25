@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import Import_Material from "../utils/Import_Material";
+import AddFromStyle from "../styles/AddFrom.module.css";
 type ModelProps = {
   open: boolean;
   title?: string;
@@ -11,44 +12,42 @@ export default function Model_Comp({ open, handleClose, title }: ModelProps) {
     Button,
     Dialog,
     DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
+
+    TextField,
   } = Import_Material;
   return (
     <div>
       <Dialog
         open={open}
-        fullWidth
         maxWidth="xs"
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          <h3>{title}</h3>
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            <h2
-              style={{
-                textAlign: "center",
-              }}
-            ></h2>
-          </DialogContentText>
-        </DialogContent>
         <DialogActions>
           <Grid container xs={12}>
-            <Grid item xs={3}></Grid>
-            <Grid item xs={3}>
-              <Button variant="contained" color="error"></Button>
-            </Grid>
-            <Grid item xs={3}>
-              <Button variant="contained" onClick={handleClose}>
-                Cancel
-              </Button>
-            </Grid>
-            <Grid item xs={3}></Grid>
+            <div className={AddFromStyle.Addform_Parent}>
+              <div>
+                <TextField />
+              </div>
+              <div>
+                {" "}
+                <TextField />
+              </div>
+              <div>
+                {" "}
+                <TextField />
+              </div>
+              <div>
+                {" "}
+                <TextField />
+              </div>
+              <div>
+                <Button variant="contained" onClick={handleClose}>
+                  Cancel
+                </Button>
+              </div>
+            </div>
           </Grid>{" "}
         </DialogActions>
       </Dialog>

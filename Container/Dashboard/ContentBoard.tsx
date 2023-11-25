@@ -29,7 +29,7 @@ export default function ContentBoard() {
       <ModelComp open={open} handleClose={handleCloseClick} />
 
       <div className={ContenBoardStyle.Table_style}>
-        <Table />
+        <Table  />
       </div>
     </div>
   );
