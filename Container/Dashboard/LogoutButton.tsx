@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ApplicationProps } from "../../ContextAPI/Context";
 import Button from "@mui/material/Button";
 import LogoutButtonStyle from "../../styles/LogoutButton.module.css";
-
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 export default function LogoutButton({ handleLogout, getId }) {
   const { TableArray, setRouterPath, RouterPath } =
     useContext(ApplicationProps);
@@ -27,7 +27,12 @@ export default function LogoutButton({ handleLogout, getId }) {
       </div>
       <div>
         {" "}
-        <Button onClick={handleLogout} variant="contained" color="error">
+        <Button
+          onClick={handleLogout}
+          variant="contained"
+          color="error"
+          style={{ marginRight: "15px" }}
+        >
           Log out
         </Button>
       </div>

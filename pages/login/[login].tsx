@@ -21,7 +21,7 @@ const Login = () => {
   return (
     <BrowserRouter>
       {" "}
-      <div style={{ backgroundColor: "#DBD4B4" }}>
+      <div style={{ backgroundColor: "rgb(46 46 14 / 18%)" }}>
         <Head>
           <title>Dashboard</title>
         </Head>{" "}
