@@ -4,9 +4,11 @@ import Button from "@mui/material/Button";
 import LogoutButtonStyle from "../../styles/LogoutButton.module.css";
 
 export default function LogoutButton({ handleLogout, getId }) {
-  const { TableArray } = useContext(ApplicationProps);
-
+  const { TableArray, setRouterPath, RouterPath } =
+    useContext(ApplicationProps);
+  setRouterPath(getId);
   console.log(TableArray);
+
   return (
     <div className={LogoutButtonStyle.LogoutButtonStyle_flex}>
       <div>
