@@ -1,0 +1,12 @@
+.Hamburger_menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 80px;
+  align-items: center;
+}
+
+.menu_list_parent {
+  display: grid;
+  grid-template-columns: 58px 52px;
+}

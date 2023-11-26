@@ -4,6 +4,7 @@ import LogoutButton from "../../Container/Dashboard/LogoutButton";
 import ContentBoardStyle from "../../styles/ContenBoard.module.css";
 import ContentBoard from "../../Container/Dashboard/ContentBoard";
 import ContextAPi from "../../ContextAPI/Context";
+import Sidebar from "../../Container/Dashboard/Sidebar";
 import Head from "next/head";
 const Login = () => {
   const router = useRouter();
@@ -19,10 +20,10 @@ const Login = () => {
       </Head>{" "}
       <ContextAPi>
         <Grid container spacing={2}>
-          <Grid item xs={3}>
-            Sidbar
+          <Grid item xs={2}>
+            <Sidebar />
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={10}>
             <div className={ContentBoardStyle.ContentBoard_Parent}>
               <div>
                 {" "}

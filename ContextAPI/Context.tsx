@@ -20,60 +20,6 @@ export default function Context({ children }) {
       email: "Mango@gmail.com",
       mobile: "1234567890",
     },
-    {
-      fistname: "Mango",
-      lastname: "M",
-      email: "Mango@gmail.com",
-      mobile: "1234567890",
-    },
-    {
-      fistname: "Mango",
-      lastname: "M",
-      email: "Mango@gmail.com",
-      mobile: "1234567890",
-    },
-    {
-      fistname: "Mango",
-      lastname: "M",
-      email: "Mango@gmail.com",
-      mobile: "1234567890",
-    },
-    {
-      fistname: "Mango",
-      lastname: "M",
-      email: "Mango@gmail.com",
-      mobile: "1234567890",
-    },
-    {
-      fistname: "Mango",
-      lastname: "M",
-      email: "Mango@gmail.com",
-      mobile: "1234567890",
-    },
-    {
-      fistname: "Mango",
-      lastname: "M",
-      email: "Mango@gmail.com",
-      mobile: "1234567890",
-    },
-    {
-      fistname: "Mango",
-      lastname: "M",
-      email: "Mango@gmail.com",
-      mobile: "1234567890",
-    },
-    {
-      fistname: "Mango",
-      lastname: "M",
-      email: "Mango@gmail.com",
-      mobile: "1234567890",
-    },
-    {
-      fistname: "Mango",
-      lastname: "M",
-      email: "Mango@gmail.com",
-      mobile: "1234567890",
-    },
   ]);
 
   return (
