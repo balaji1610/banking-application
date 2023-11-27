@@ -11,7 +11,22 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 export default function Sidebar() {
   const [Togglemenu, setTogglemenu] = useState(true);
+  const [mouseEvent, setmouseEvent] = useState("true");
   const { RouterPath } = useContext(ApplicationProps);
+
+  const [Hoverindex, setHoverindex] = useState(-1);
+  const [Navarray, setNavarray] = useState([
+    {
+      link: `/login/${RouterPath}`,
+      icon: <Home />,
+      text: "Home",
+    },
+    {
+      link: "/aboutme",
+      icon: <Dashboard />,
+      text: "Dashboard",
+    },
+  ]);
   const MenuClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     setTogglemenu(!Togglemenu);
@@ -21,48 +36,53 @@ export default function Sidebar() {
   const ClickRouter = () => {
     router.push("/aboutme");
   };
+
+  const MouseEnter = (e, index) => {
+    setHoverindex(index);
+  };
+  const MouseLeave = () => {
+    setHoverindex(-1);
+  };
+
   return (
     <div>
       <div onClick={MenuClick} className={SidebarStyle.Hamburger_menu}>
         {" "}
-        <IconButton>
+        <img
+          width="64"
+          height="64"
+          src="https://img.icons8.com/cotton/64/menu.png"
+          alt="menu"
+          style={{ cursor: "pointer" }}
+        />
+        {/* <IconButton>
           <MenuIcon />
-        </IconButton>
+        </IconButton> */}
       </div>
       <div>
-        {/* <div>
-          <div>
-            <Link to={`/login/${RouterPath}`}>Home</Link>
-          </div>
-
-          <div>
-            {" "}
-            <Link to="/aboutme">Dashboard</Link>
-          </div>
-        </div> */}
         <List>
           {Togglemenu ? (
             <div className={SidebarStyle.menu_content_list}>
-              <Link
-                to={`/login/${RouterPath}`}
-                className={SidebarStyle.link_router}
-              >
-                <ListItem>
-                  <ListItemIcon>
-                    <Home />
-                  </ListItemIcon>
-                  <ListItemText primary="Home" />
-                </ListItem>
-              </Link>{" "}
-              <Link to="/aboutme" className={SidebarStyle.link_router}>
-                {" "}
-                <ListItem>
-                  <ListItemIcon>
-                    <Dashboard />
-                  </ListItemIcon>
-                  <ListItemText primary="Dashboard" />
-                </ListItem>
-              </Link>
+              {Navarray.map((el, index) => {
+                return (
+                  <>
+                    {" "}
+                    <Link to={el.link} className={SidebarStyle.link_router}>
+                      <ListItem
+                        onMouseEnter={(e) => MouseEnter(e, index)}
+                        onMouseLeave={MouseLeave}
+                        style={{
+                          backgroundColor: Hoverindex == index && "#F5F5F5",
+                          borderRadius: Hoverindex == index && "10px",
+                        }}
+                      >
+                        <ListItemIcon>{el.icon}</ListItemIcon>
+                        <ListItemText primary={el.text} />
+                      </ListItem>
+                    </Link>
+                  </>
+                );
+              })}{" "}
             </div>
           ) : (
             <div className={SidebarStyle.icons_list}>
