@@ -11,7 +11,8 @@
 .AddBtn_style {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 9rem;
 }
 .Table_style {
   padding: 10px;

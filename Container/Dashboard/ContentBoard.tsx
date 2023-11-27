@@ -18,10 +18,11 @@ export default function ContentBoard() {
       <div className={ContenBoardStyle.AddBtn_style}>
         <div onClick={handleModelOpen}>
           <img
-            width="50"
-            height="50"
-            src="https://img.icons8.com/ios-filled/50/add--v1.png"
+            width="75"
+            height="75"
+            src="https://img.icons8.com/plasticine/100/plus-2-math.png"
             alt="add--v1"
+            style={{ cursor: "pointer" }}
           />
         </div>
       </div>
@@ -29,7 +30,7 @@ export default function ContentBoard() {
       <ModelComp open={open} handleClose={handleCloseClick} />
 
       <div className={ContenBoardStyle.Table_style}>
-        <Table  />
+        <Table />
       </div>
     </div>
   );

@@ -31,8 +31,27 @@ export default function BasicTable() {
 
   console.log(TableArray);
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650, border: "2px solid black" }}>
+    <TableContainer
+      component={Paper}
+      style={{ height: "31rem", overflow: "scroll" }}
+    >
+      <Table
+        stickyHeader
+        sx={{
+          minWidth: 650,
+          border: "2px solid #ffffff",
+          heigh: "10px",
+          "& th": {
+            color: "#060202",
+            backgroundColor: "#BDBDBD",
+            fontSize: "large",
+            fontWeight: "bold",
+          },
+          "& tr": {
+            fontSize: "15px",
+          },
+        }}
+      >
         <TableHead>
           <TableRow>
             <TableCell>Fist Name </TableCell>
@@ -40,13 +59,11 @@ export default function BasicTable() {
             <TableCell>Email</TableCell>
             <TableCell>Mobile</TableCell>
           </TableRow>
-        </TableHead>
+        </TableHead>{" "}
         <TableBody>
           {TableArray.map((el) => (
             <TableRow>
-              <TableCell component="th" scope="row">
-                {el.fistname}
-              </TableCell>
+              <TableCell>{el.fistname}</TableCell>
               <TableCell>{el.lastname}</TableCell>
               <TableCell>{el.email}</TableCell>
               <TableCell>{el.mobile}</TableCell>
