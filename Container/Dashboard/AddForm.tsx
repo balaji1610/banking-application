@@ -102,7 +102,7 @@ export default function AddForm({ handleClose }) {
           <div>
             <Button variant="contained" onClick={handleClose} color="error">
               Cancel
-            </Button>
+            </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Button type="submit" variant="contained">
               Submit
             </Button>

@@ -1,10 +1,11 @@
 .ContentBoard_Parent {
-  background-color: #ffffff;
-  border: 1px solid black;
+  border: 2px solid #ffffff;
   display: grid;
+
   grid-gap: 25px;
   gap: 25px;
   grid-template-rows: 2fr 17fr;
+  border-radius: 10px;
 }
 
 .AddBtn_style {

@@ -18,7 +18,7 @@ export default function LogoutButton({ handleLogout, getId }) {
             <img
               width="54"
               height="54"
-              src="https://img.icons8.com/3d-fluency/94/administrator-male--v1.png"
+              src="https://img.icons8.com/3d-fluency/94/user-male-circle.png"
               alt="administrator-male--v1"
             />
           </div>

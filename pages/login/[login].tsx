@@ -3,6 +3,7 @@ import { Routes, BrowserRouter, Route } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import LogoutButton from "../../Container/Dashboard/LogoutButton";
 import ContentBoardStyle from "../../styles/ContenBoard.module.css";
+import LoginStyle from "../../styles/Login.module.css";
 import ContentBoard from "../../Container/Dashboard/ContentBoard";
 import ContextAPi from "../../ContextAPI/Context";
 import Sidebar from "../../Container/Dashboard/Sidebar";
@@ -21,7 +22,7 @@ const Login = () => {
   return (
     <BrowserRouter>
       {" "}
-      <div style={{ backgroundColor: "rgb(46 46 14 / 18%)" }}>
+      <div className={LoginStyle.login_parent_bg}>
         <Head>
           <title>Dashboard</title>
         </Head>{" "}
