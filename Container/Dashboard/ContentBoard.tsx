@@ -22,6 +22,7 @@ export default function ContentBoard() {
             height="75"
             src="https://img.icons8.com/plasticine/100/plus-2-math.png"
             alt="add--v1"
+            title="Add"
             style={{ cursor: "pointer" }}
           />
         </div>

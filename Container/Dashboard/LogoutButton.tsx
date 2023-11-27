@@ -33,6 +33,7 @@ export default function LogoutButton({ handleLogout, getId }) {
           height="48"
           src="https://img.icons8.com/color/48/shutdown--v1.png"
           alt="shutdown--v1"
+          title="Logout"
           style={{ marginRight: "15px", cursor: "pointer" }}
         />
       </div>
