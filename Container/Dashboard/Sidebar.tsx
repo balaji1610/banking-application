@@ -21,11 +21,13 @@ export default function Sidebar() {
       link: `/login/${RouterPath}`,
       icon: <Home />,
       text: "Home",
+      hovericon: <Home color="primary" />,
     },
     {
       link: "/aboutme",
       icon: <Dashboard />,
       text: "Dashboard",
+      hovericon: <Dashboard color="primary" />,
     },
   ]);
   const MenuClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -80,7 +82,9 @@ export default function Sidebar() {
                           borderRadius: Hoverindex == index && "10px",
                         }}
                       >
-                        <ListItemIcon>{el.icon}</ListItemIcon>
+                        <ListItemIcon>
+                          {Hoverindex == index ? el.hovericon : el.icon}
+                        </ListItemIcon>
                         <ListItemText primary={el.text} />
                       </ListItem>
                     </Link>
@@ -90,25 +94,31 @@ export default function Sidebar() {
             </div>
           ) : (
             <div className={SidebarStyle.icons_list}>
-              <Link
-                to={`/login/${RouterPath}`}
-                className={SidebarStyle.link_router}
-              >
-                {" "}
-                <ListItem button>
-                  <ListItemIcon>
-                    <Home />
-                  </ListItemIcon>
-                </ListItem>
-              </Link>
-              <Link to="/aboutme" className={SidebarStyle.link_router}>
-                <ListItem button>
-                  {" "}
-                  <ListItemIcon>
-                    <Dashboard />
-                  </ListItemIcon>
-                </ListItem>
-              </Link>
+              {Navarray.map((el, index) => {
+                return (
+                  <>
+                    {" "}
+                    <Link
+                      to={el.text == "Home" ? `/login/${RouterPath}` : el.link}
+                      className={SidebarStyle.link_router}
+                    >
+                      {" "}
+                      <ListItem
+                        onMouseEnter={(e) => MouseEnter(e, index)}
+                        onMouseLeave={MouseLeave}
+                        style={{
+                          backgroundColor: Hoverindex == index && "#F5F5F5",
+                          borderRadius: Hoverindex == index && "10px",
+                        }}
+                      >
+                        <ListItemIcon>
+                          {Hoverindex == index ? el.hovericon : el.icon}
+                        </ListItemIcon>
+                      </ListItem>
+                    </Link>
+                  </>
+                );
+              })}
             </div>
           )}
         </List>
