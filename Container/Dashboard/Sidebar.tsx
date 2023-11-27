@@ -15,6 +15,7 @@ export default function Sidebar() {
   const { RouterPath } = useContext(ApplicationProps);
 
   const [Hoverindex, setHoverindex] = useState(-1);
+
   const [Navarray, setNavarray] = useState([
     {
       link: `/login/${RouterPath}`,
@@ -67,7 +68,10 @@ export default function Sidebar() {
                 return (
                   <>
                     {" "}
-                    <Link to={el.link} className={SidebarStyle.link_router}>
+                    <Link
+                      to={el.text == "Home" ? `/login/${RouterPath}` : el.link}
+                      className={SidebarStyle.link_router}
+                    >
                       <ListItem
                         onMouseEnter={(e) => MouseEnter(e, index)}
                         onMouseLeave={MouseLeave}
