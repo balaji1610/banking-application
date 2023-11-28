@@ -7,7 +7,6 @@ export default function LogoutButton({ handleLogout, getId }) {
   const { TableArray, setRouterPath, RouterPath } =
     useContext(ApplicationProps);
   setRouterPath(getId);
-  console.log(TableArray);
 
   return (
     <div className={LogoutButtonStyle.LogoutButtonStyle_flex}>
