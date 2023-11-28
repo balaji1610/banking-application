@@ -27,15 +27,14 @@ export default function LogoutButton({ handleLogout, getId }) {
       </div>
       <div>
         {" "}
-        <img
+        <Button
+          variant="contained"
           onClick={handleLogout}
-          width="48"
-          height="48"
-          src="https://img.icons8.com/color/48/shutdown--v1.png"
-          alt="shutdown--v1"
-          title="Logout"
-          style={{ marginRight: "15px", cursor: "pointer" }}
-        />
+          color="error"
+          style={{ marginRight: "15px" }}
+        >
+          Logout
+        </Button>
       </div>
     </div>
   );
