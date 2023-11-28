@@ -7,9 +7,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ApplicationProps } from "../../ContextAPI/Context";
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 function createData(
   name: string,
   calories: number,
@@ -29,7 +30,15 @@ const rows = [
 ];
 
 export default function BasicTable() {
-  const { RouterPath, TableArray } = useContext(ApplicationProps);
+  const { RouterPath, TableArray, ViewGetData, setViewGetData } =
+    useContext(ApplicationProps);
+
+  const viewClick = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    getData: {}
+  ) => {
+    setViewGetData(getData);
+  };
 
   return (
     <TableContainer
@@ -63,7 +72,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>{" "}
         <TableBody>
-          {TableArray.map((el) => (
+          {TableArray.map((el, index) => (
             <TableRow>
               <TableCell>{el.fistname}</TableCell>
               <TableCell>{el.lastname}</TableCell>
@@ -72,7 +81,9 @@ export default function BasicTable() {
               <TableCell>
                 <Link to={`/login/${RouterPath}/banking`}>
                   {" "}
-                  <Button variant="contained">View</Button>
+                  <Button onClick={(e) => viewClick(e, el)} variant="contained">
+                    View
+                  </Button>
                 </Link>
               </TableCell>
             </TableRow>

@@ -3,8 +3,9 @@ import { ApplicationProps } from "../../ContextAPI/Context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 export default function BankingPage() {
-  const { RouterPath } = useContext(ApplicationProps);
+  const { RouterPath, ViewGetData } = useContext(ApplicationProps);
 
+  console.log(ViewGetData, "ViewGetData");
   return (
     <div>
       <Link to={`/login/${RouterPath}`}>
