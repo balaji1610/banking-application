@@ -9,8 +9,7 @@ import { Home, Dashboard } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useRouter } from "next/router";
-export default function Sidebar() {
-  const [Togglemenu, setTogglemenu] = useState(true);
+export default function Sidebar({ MenuClick, Togglemenu }) {
   const [mouseEvent, setmouseEvent] = useState("true");
   const { RouterPath } = useContext(ApplicationProps);
 
@@ -30,10 +29,7 @@ export default function Sidebar() {
       hovericon: <Dashboard color="primary" />,
     },
   ]);
-  const MenuClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    setTogglemenu(!Togglemenu);
-  };
+
   const router = useRouter();
 
   const ClickRouter = () => {
@@ -58,9 +54,6 @@ export default function Sidebar() {
           alt="menu"
           style={{ cursor: "pointer" }}
         />
-        {/* <IconButton>
-          <MenuIcon />
-        </IconButton> */}
       </div>
       <div>
         <List>

@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import LogoutButton from "../../Container/Dashboard/LogoutButton";
@@ -12,6 +13,12 @@ import Head from "next/head";
 import { useContext } from "react";
 
 const Login = () => {
+  const [Togglemenu, setTogglemenu] = useState(true);
+
+  const MenuClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setTogglemenu(!Togglemenu);
+  };
   const router = useRouter();
   const getId = router.query.login;
 
@@ -28,10 +35,10 @@ const Login = () => {
         </Head>{" "}
         <ContextAPi>
           <Grid container spacing={2}>
-            <Grid item xs={2}>
-              <Sidebar />
+            <Grid item xs={Togglemenu ? 2 : 1}>
+              <Sidebar MenuClick={MenuClick} Togglemenu={Togglemenu} />
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={Togglemenu ? 10 : 11}>
               <div className={ContentBoardStyle.ContentBoard_Parent}>
                 <div>
                   {" "}
