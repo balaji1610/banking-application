@@ -28,7 +28,12 @@ export default function ContentBoard() {
         </div>
       </div>
 
-      <ModelComp open={open} setOpen={setOpen} handleClose={handleCloseClick} />
+      <ModelComp
+        open={open}
+        setOpen={setOpen}
+        handleClose={handleCloseClick}
+        title="ADD CUSTOMER"
+      />
 
       <div className={ContenBoardStyle.Table_style}>
         <Table />

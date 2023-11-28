@@ -7,3 +7,10 @@
   margin-left: 61px;
   padding-top: 48px;
 }
+.cancel_Sumbit_btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* margin-left: -61px; */
+  margin-right: 67px;
+}

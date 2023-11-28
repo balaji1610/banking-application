@@ -65,6 +65,7 @@ export default function AddForm({ handleClose, setOpen }) {
               onChange={formik.handleChange}
               helperText={touched.fistname && formik.errors.fistname}
               error={touched.fistname && Boolean(errors.fistname)}
+              style={{ width: "17rem" }}
             />
           </div>
           <div>
@@ -77,6 +78,7 @@ export default function AddForm({ handleClose, setOpen }) {
               onChange={handleChange}
               helperText={touched.lastname && formik.errors.lastname}
               error={touched.lastname && Boolean(errors.lastname)}
+              style={{ width: "17rem" }}
             />
           </div>
           <div>
@@ -89,6 +91,7 @@ export default function AddForm({ handleClose, setOpen }) {
               onChange={handleChange}
               helperText={touched.email && formik.errors.email}
               error={touched.email && Boolean(errors.email)}
+              style={{ width: "17rem" }}
             />
           </div>
           <div>
@@ -101,16 +104,22 @@ export default function AddForm({ handleClose, setOpen }) {
               onChange={handleChange}
               helperText={touched.mobile && formik.errors.mobile}
               error={touched.mobile && Boolean(errors.mobile)}
+              style={{ width: "17rem" }}
             />
           </div>
-          <div>
-            <Button variant="contained" onClick={handleClose} color="error">
-              Cancel
-            </Button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Button type="submit" variant="contained">
-              Submit
-            </Button>
+          <div className={AddFromStyle.cancel_Sumbit_btn}>
+            <div>
+              {" "}
+              <Button variant="contained" onClick={handleClose} color="error">
+                Cancel
+              </Button>
+            </div>
+            <div>
+              {" "}
+              <Button type="submit" variant="contained">
+                Submit
+              </Button>
+            </div>
           </div>
         </div>
       </form>
