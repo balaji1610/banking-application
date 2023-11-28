@@ -17,14 +17,13 @@ export default function ContentBoard() {
   return (
     <div>
       <div className={ContenBoardStyle.AddBtn_style}>
+        <div className={ContenBoardStyle.customer_Text_style}>
+          <h1>CUSTOMERS</h1>
+        </div>
         <div onClick={handleModelOpen}>
           <Button variant="contained" color="success">
             Add Customer
           </Button>
-          {/* <AddCircleOutlineIcon
-            fontSize="large"
-            style={{ cursor: "pointer", color: "#ffffff", fontSize: "3rem" }}
-          /> */}
         </div>
       </div>
 

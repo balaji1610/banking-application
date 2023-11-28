@@ -1,20 +1,24 @@
 .ContentBoard_Parent {
   border: 2px solid #ffffff;
   display: grid;
-
   grid-gap: 25px;
   gap: 25px;
-  grid-template-rows: 2fr 17fr;
+  grid-template-rows: 2fr 19fr;
   border-radius: 10px;
 }
 
 .AddBtn_style {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  margin-right: 3rem;
+  justify-content: space-between;
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 .Table_style {
   padding: 10px;
-  margin-top: 4px;
+  margin-top: -17px;
+}
+.customer_Text_style {
+  margin-top: -1rem;
+  color: #ffffff;
 }
