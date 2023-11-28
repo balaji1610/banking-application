@@ -3,6 +3,9 @@ import Import_Material from "../utils/Import_Material";
 
 import { ModelProps } from "../interfaces/index";
 import AddFrom from "../Container/Dashboard/AddForm";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+
 export default function Model_Comp({ open, handleClose, title }: ModelProps) {
   //all imports
   const {
@@ -21,6 +24,17 @@ export default function Model_Comp({ open, handleClose, title }: ModelProps) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
         <DialogActions>
           <Grid container xs={12}>
             <AddFrom handleClose={handleClose} />

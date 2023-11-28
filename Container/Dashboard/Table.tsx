@@ -33,7 +33,7 @@ export default function BasicTable() {
   return (
     <TableContainer
       component={Paper}
-      style={{ height: "31rem", overflow: "scroll" }}
+      style={{ height: "31rem", overflow: "scroll", overflowX: "hidden" }}
     >
       <Table
         stickyHeader
@@ -42,8 +42,8 @@ export default function BasicTable() {
           border: "2px solid #ffffff",
           heigh: "10px",
           "& th": {
-            color: "#060202",
-            backgroundColor: "#BDBDBD",
+            color: "#ffffff",
+            backgroundColor: "#000000",
             fontSize: "large",
             fontWeight: "bold",
           },

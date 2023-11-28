@@ -7,7 +7,6 @@ import { useContext } from "react";
 export default function AddForm({ handleClose }) {
   const { TableArray, setTableArray } = useContext(ApplicationProps);
 
-  console.log(TableArray, "TableArray");
   const { TextField, Button } = Import_Material;
   //Formik
   const formik = useFormik({
@@ -43,7 +42,6 @@ export default function AddForm({ handleClose }) {
       setTableArray([values, ...TableArray]);
     },
   });
-  console.log(formik.errors, "formik.errors");
 
   const { values, handleSubmit, touched, errors, handleChange } = formik;
 
@@ -102,7 +100,8 @@ export default function AddForm({ handleClose }) {
           <div>
             <Button variant="contained" onClick={handleClose} color="error">
               Cancel
-            </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </Button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Button type="submit" variant="contained">
               Submit
             </Button>
