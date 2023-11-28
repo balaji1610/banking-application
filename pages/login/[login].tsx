@@ -9,6 +9,7 @@ import ContentBoard from "../../Container/Dashboard/ContentBoard";
 import ContextAPi from "../../ContextAPI/Context";
 import Sidebar from "../../Container/Dashboard/Sidebar";
 import Menu1 from "../../Container/Dashboard/Menu1";
+import BankingPage from "../../Container/Banking/BankingPage";
 import Head from "next/head";
 import { useContext } from "react";
 
@@ -50,7 +51,12 @@ const Login = () => {
                       path={`/login/${getId}`}
                       element={<ContentBoard />}
                     />
+
                     <Route path="/aboutme" element={<Menu1 />} />
+                    <Route
+                      path={`/login/${getId}/banking`}
+                      element={<BankingPage />}
+                    />
                   </Routes>
                 </div>
               </div>

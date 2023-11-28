@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import { useContext } from "react";
 import { ApplicationProps } from "../../ContextAPI/Context";
+import { Link } from "react-router-dom";
 function createData(
   name: string,
   calories: number,
@@ -28,7 +29,7 @@ const rows = [
 ];
 
 export default function BasicTable() {
-  const { TableArray } = useContext(ApplicationProps);
+  const { RouterPath, TableArray } = useContext(ApplicationProps);
 
   return (
     <TableContainer
@@ -69,7 +70,10 @@ export default function BasicTable() {
               <TableCell>{el.email}</TableCell>
               <TableCell>{el.mobile}</TableCell>
               <TableCell>
-                <Button variant="contained">View</Button>
+                <Link to={`/login/${RouterPath}/banking`}>
+                  {" "}
+                  <Button variant="contained">View</Button>
+                </Link>
               </TableCell>
             </TableRow>
           ))}
