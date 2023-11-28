@@ -19,14 +19,32 @@ export default function Sidebar({ MenuClick, Togglemenu }) {
     {
       link: `/login/${RouterPath}`,
       icon: <Home />,
+      iconOnly: <Home fontSize="large" className={SidebarStyle.icon_only} />,
       text: "Home",
       hovericon: <Home color="primary" />,
+      hovericonOnly: (
+        <Home
+          color="primary"
+          fontSize="large"
+          className={SidebarStyle.icon_only}
+        />
+      ),
     },
     {
       link: "/aboutme",
       icon: <Dashboard />,
+      iconOnly: (
+        <Dashboard fontSize="large" className={SidebarStyle.icon_only} />
+      ),
       text: "Dashboard",
       hovericon: <Dashboard color="primary" />,
+      hovericonOnly: (
+        <Dashboard
+          color="primary"
+          fontSize="large"
+          className={SidebarStyle.icon_only}
+        />
+      ),
     },
   ]);
 
@@ -75,7 +93,7 @@ export default function Sidebar({ MenuClick, Togglemenu }) {
                           borderRadius: Hoverindex == index && "10px",
                         }}
                       >
-                        <ListItemIcon>
+                        <ListItemIcon style={{ height: "20px" }}>
                           {Hoverindex == index ? el.hovericon : el.icon}
                         </ListItemIcon>
                         <ListItemText primary={el.text} />
@@ -105,7 +123,15 @@ export default function Sidebar({ MenuClick, Togglemenu }) {
                         }}
                       >
                         <ListItemIcon>
-                          {Hoverindex == index ? el.hovericon : el.icon}
+                          {/* <Home
+                            fontSize="large"
+                            style={{
+                              marginLeft: "20px",
+                              paddingTop: "10px",
+                              paddingBottom: "10px",
+                            }}
+                          /> */}
+                          {Hoverindex == index ? el.hovericonOnly : el.iconOnly}
                         </ListItemIcon>
                       </ListItem>
                     </Link>
