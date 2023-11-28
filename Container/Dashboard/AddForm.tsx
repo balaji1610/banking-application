@@ -37,7 +37,12 @@ export default function AddForm({ handleClose }) {
     }),
 
     onSubmit: (values) => {
-      console.log(values);
+      const USAnumber = `(${values.mobile.slice(0, 3)}) ${[
+        values.mobile.slice(3, 6),
+        values.mobile.slice(-3),
+      ].join("-")}`;
+
+      values.mobile = USAnumber;
 
       setTableArray([values, ...TableArray]);
     },
