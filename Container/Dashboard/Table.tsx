@@ -6,6 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Button } from "@mui/material";
 import { useContext } from "react";
 import { ApplicationProps } from "../../ContextAPI/Context";
 function createData(
@@ -29,7 +30,6 @@ const rows = [
 export default function BasicTable() {
   const { TableArray } = useContext(ApplicationProps);
 
-  console.log(TableArray);
   return (
     <TableContainer
       component={Paper}
@@ -58,6 +58,7 @@ export default function BasicTable() {
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Mobile</TableCell>
+            <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>{" "}
         <TableBody>
@@ -67,6 +68,9 @@ export default function BasicTable() {
               <TableCell>{el.lastname}</TableCell>
               <TableCell>{el.email}</TableCell>
               <TableCell>{el.mobile}</TableCell>
+              <TableCell>
+                <Button variant="contained">View</Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

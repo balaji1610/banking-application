@@ -123,14 +123,6 @@ export default function Sidebar({ MenuClick, Togglemenu }) {
                         }}
                       >
                         <ListItemIcon>
-                          {/* <Home
-                            fontSize="large"
-                            style={{
-                              marginLeft: "20px",
-                              paddingTop: "10px",
-                              paddingBottom: "10px",
-                            }}
-                          /> */}
                           {Hoverindex == index ? el.hovericonOnly : el.iconOnly}
                         </ListItemIcon>
                       </ListItem>
