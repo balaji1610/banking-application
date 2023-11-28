@@ -10,7 +10,7 @@ export default function ContentBoard() {
     setOpen(true);
   };
 
-  const handleCloseClick = (): void => {
+  const handleCloseClick = () => {
     setOpen(false);
   };
   return (
@@ -24,7 +24,7 @@ export default function ContentBoard() {
         </div>
       </div>
 
-      <ModelComp open={open} handleClose={handleCloseClick} />
+      <ModelComp open={open} setOpen={setOpen} handleClose={handleCloseClick} />
 
       <div className={ContenBoardStyle.Table_style}>
         <Table />

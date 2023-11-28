@@ -6,7 +6,7 @@ import AddFrom from "../Container/Dashboard/AddForm";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function Model_Comp({ open, handleClose, title }: ModelProps) {
+export default function Model_Comp({ open, handleClose, setOpen }) {
   //all imports
   const {
     Button,
@@ -37,7 +37,7 @@ export default function Model_Comp({ open, handleClose, title }: ModelProps) {
         </IconButton>
         <DialogActions>
           <Grid container xs={12}>
-            <AddFrom handleClose={handleClose} />
+            <AddFrom setOpen={setOpen} handleClose={handleClose} />
           </Grid>{" "}
         </DialogActions>
       </Dialog>

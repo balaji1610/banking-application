@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ApplicationProps } from "../../ContextAPI/Context";
 import { useContext } from "react";
-export default function AddForm({ handleClose }) {
+export default function AddForm({ handleClose, setOpen }) {
   const { TableArray, setTableArray } = useContext(ApplicationProps);
 
   const { TextField, Button } = Import_Material;
@@ -45,6 +45,7 @@ export default function AddForm({ handleClose }) {
       values.mobile = USAnumber;
 
       setTableArray([values, ...TableArray]);
+      setOpen(false);
     },
   });
 

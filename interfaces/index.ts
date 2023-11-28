@@ -13,4 +13,5 @@ export type ModelProps = {
   open: boolean;
   title?: string;
   handleClose: () => void;
+  setOpen?: boolean;
 };
