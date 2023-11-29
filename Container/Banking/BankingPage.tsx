@@ -38,7 +38,7 @@ export default function BankingPage() {
           </RouterLink>
 
           <Link underline="hover" color="inherit">
-            BANK DETAILS
+            Bank Details
           </Link>
         </Breadcrumbs>
       </div>
@@ -46,10 +46,20 @@ export default function BankingPage() {
       <div>
         {" "}
         <TabContext value={value}>
-          <TabList onChange={handleChange}>
-            <Tab label="User Details" value="1" />
-            <Tab label="Bank Details" value="2" />
-          </TabList>
+          <div style={BankingPageStyle.tabStyle as React.CSSProperties}>
+            <TabList onChange={handleChange}>
+              <Tab
+                label="User Details"
+                value="1"
+                style={BankingPageStyle.tabLabelStyle}
+              />
+              <Tab
+                label="Bank Details"
+                value="2"
+                style={BankingPageStyle.tabLabelStyle}
+              />
+            </TabList>
+          </div>
 
           <TabPanel value="1">
             <UserDetailsTab />

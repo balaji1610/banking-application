@@ -14,7 +14,10 @@ const BankingPageStyle = {
     marginLeft: "5px",
   },
   tabStyle: {
-    backgroundColor: "rgb(224 224 224)",
+    backgroundColor: "rgb(0 0 0 / 23%)",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
   },
   tabLabelStyle: {
     fontSize: "17px",
