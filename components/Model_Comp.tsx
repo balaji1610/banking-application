@@ -2,11 +2,11 @@ import { Grid } from "@mui/material";
 import Import_Material from "../utils/Import_Material";
 
 import { ModelProps } from "../interfaces/index";
-import AddFrom from "../Container/Dashboard/AddForm";
+// import AddFrom from "../Container/Dashboard/AddForm";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function Model_Comp({ open, handleClose, setOpen, title }) {
+export default function Model_Comp({ open, handleClose, setOpen, title,component }) {
   //all imports
   const {
     Button,
@@ -49,7 +49,8 @@ export default function Model_Comp({ open, handleClose, setOpen, title }) {
         </DialogTitle>
         <DialogActions>
           <Grid container xs={12}>
-            <AddFrom setOpen={setOpen} handleClose={handleClose} />
+            {component}
+            {/* <AddFrom setOpen={setOpen} handleClose={handleClose} /> */}
           </Grid>{" "}
         </DialogActions>
       </Dialog>

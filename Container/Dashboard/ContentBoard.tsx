@@ -4,6 +4,7 @@ import { useState } from "react";
 import ModelComp from "../../components/Model_Comp";
 import Table from "./Table";
 import { Button } from "@mui/material";
+import AddForm from "./AddForm";
 export default function ContentBoard() {
   const [open, setOpen] = useState(false);
 
@@ -32,6 +33,7 @@ export default function ContentBoard() {
         setOpen={setOpen}
         handleClose={handleCloseClick}
         title="ADD CUSTOMER"
+        component={<AddForm setOpen={setOpen} handleClose={handleCloseClick} />}
       />
 
       <div className={ContenBoardStyle.Table_style}>

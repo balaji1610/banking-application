@@ -8,6 +8,8 @@ export default function LogoutButton({ handleLogout, getId }) {
     useContext(ApplicationProps);
   setRouterPath(getId);
 
+
+
   return (
     <div className={LogoutButtonStyle.LogoutButtonStyle_flex}>
       <div>

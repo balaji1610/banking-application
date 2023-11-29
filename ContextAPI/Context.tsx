@@ -5,11 +5,11 @@ export default function Context({ children }) {
   const [ViewGetData, setViewGetData] = useState();
   const [TableArray, setTableArray] = useState([
     {
-      fistname: "apple",
+      fistname: "balaji",
       lastname: "A",
       email: "apple@gmail.com",
       mobile: "(908) 041-562",
-      BankingData: [],
+      BankingData: [1, 23],
     },
     {
       fistname: "Banana",

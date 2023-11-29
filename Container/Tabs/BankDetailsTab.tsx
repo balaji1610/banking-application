@@ -1,7 +1,38 @@
+import BankingPageStyle from "../../styles/BankingPageStyle";
+import { Button } from "@mui/material";
+import { useState } from "react";
+import Model_Comp from "../../components/Model_Comp";
+import AddBankForm from "../Dashboard/AddBankForm";
 export default function BankDetailsTab() {
+  const [AddBankopen, setAddBankOpen] = useState(false);
+
+  const handleModelOpen = () => {
+    setAddBankOpen(true);
+  };
+
+  const handleCloseClick = () => {
+    setAddBankOpen(false);
+  };
   return (
-    <div>
-      <h1>BankDetailsTab</h1>
+    <div style={BankingPageStyle.BankDetailsTabDev as React.CSSProperties}>
+      <div style={BankingPageStyle.Addbank as React.CSSProperties}>
+        <Button onClick={handleModelOpen} variant="contained" color="success">
+          Add Bank Details
+        </Button>
+      </div>
+
+      <Model_Comp
+        open={AddBankopen}
+        setOpen={setAddBankOpen}
+        handleClose={handleCloseClick}
+        title="ADD BANK DETAILS"
+        component={
+          <AddBankForm
+            setOpen={setAddBankOpen}
+            handleClose={handleCloseClick}
+          />
+        }
+      />
     </div>
   );
 }

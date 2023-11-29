@@ -42,6 +42,16 @@ const BankingPageStyle = {
     fontSize: "large",
     paddingBottom: "1rem",
   },
+  //BankDetails Tab
+
+  BankDetailsTabDev: {
+    marginTop: "1rem",
+  },
+  Addbank: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
 };
 
 export default BankingPageStyle;
