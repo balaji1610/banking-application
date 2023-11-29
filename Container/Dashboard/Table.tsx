@@ -79,7 +79,12 @@ export default function BasicTable() {
               <TableCell>{el.email}</TableCell>
               <TableCell>{el.mobile}</TableCell>
               <TableCell>
-                <Link to={`/login/${RouterPath}/banking`}>
+                <Link
+                  to={`/login/${RouterPath}/banking`}
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
                   {" "}
                   <Button onClick={(e) => viewClick(e, el)} variant="contained">
                     View

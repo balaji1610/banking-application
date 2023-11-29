@@ -28,6 +28,20 @@ const BankingPageStyle = {
     alignItems: "center",
     height: "18rem",
   },
+  UserDetailsTabDev: {
+    marginTop: "6rem",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+
+  userDetailsCard1: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    fontSize: "large",
+    paddingBottom: "1rem",
+  },
 };
 
 export default BankingPageStyle;
