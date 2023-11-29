@@ -15,16 +15,18 @@ const BankingPageStyle = {
   },
   tabStyle: {
     backgroundColor: "rgb(224 224 224)",
-    display: "flex",
-    height: "3rem",
-    border: "1px solid rgb(25 118 210 / 8%)",
-    flexDirection: "row",
-    justifyContent: "center",
   },
   tabLabelStyle: {
     fontSize: "17px",
     fontFamily: "'Roboto Mono'",
     fontWeight: "bold",
+  },
+  tabsParentDiv: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    height: "18rem",
   },
 };
 

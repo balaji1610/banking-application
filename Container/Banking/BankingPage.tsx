@@ -6,16 +6,18 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import HomeIcon from "@mui/icons-material/Home";
 import BankingPageStyle from "../../styles/BankingPageStyle";
 import Link from "@mui/material/Link";
-import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 import UserDetailsTab from "../Tabs/UserDetailsTab";
 import BankDetailsTab from "../Tabs/BankDetailsTab";
 
 export default function BankingPage() {
   const { RouterPath, ViewGetData } = useContext(ApplicationProps);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("1");
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
@@ -23,7 +25,7 @@ export default function BankingPage() {
     0: <UserDetailsTab />,
     1: <BankDetailsTab />,
   };
-  console.log(getTabCompoent[value]);
+
   return (
     <div style={BankingPageStyle.parent}>
       <div style={BankingPageStyle.breadcrumb as React.CSSProperties}>
@@ -41,19 +43,21 @@ export default function BankingPage() {
         </Breadcrumbs>
       </div>
 
-      <div style={BankingPageStyle.tabStyle as React.CSSProperties}>
+      <div>
         {" "}
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs example"
-        >
-          <Tab label="USER DETAILS" style={BankingPageStyle.tabLabelStyle} />
-          <Tab label="BANK DETAILS" style={BankingPageStyle.tabLabelStyle} />
-        </Tabs>
-        <div>{getTabCompoent[value]}</div>
+        <TabContext value={value}>
+          <TabList onChange={handleChange}>
+            <Tab label="User Details" value="1" />
+            <Tab label="Bank Details" value="2" />
+          </TabList>
+
+          <TabPanel value="1">
+            <UserDetailsTab />
+          </TabPanel>
+          <TabPanel value="2">
+            <BankDetailsTab />
+          </TabPanel>
+        </TabContext>
       </div>
     </div>
   );
