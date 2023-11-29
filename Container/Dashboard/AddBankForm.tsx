@@ -5,9 +5,24 @@ import * as Yup from "yup";
 import { ApplicationProps } from "../../ContextAPI/Context";
 import { useContext } from "react";
 export default function AddBankForm({ handleClose, setOpen }) {
-  const { TableArray, setTableArray } = useContext(ApplicationProps);
+  const { TableArray, setTableArray, ViewGetData, setViewGetData, Getindex } =
+    useContext(ApplicationProps);
 
   const { TextField, Button } = Import_Material;
+
+  const getsubmitValues = (formvalue: any) => {
+    const updatedTableArray = TableArray.map((item, index) => {
+      return index == Getindex
+        ? {
+            ...item,
+            BankingData: [...item.BankingData, formvalue],
+          }
+        : item;
+    });
+
+    setTableArray(updatedTableArray);
+  };
+
   //Formik
   const formik = useFormik({
     initialValues: {
@@ -39,17 +54,8 @@ export default function AddBankForm({ handleClose, setOpen }) {
     }),
 
     onSubmit: (values) => {
+      getsubmitValues(values);
       setOpen(false);
-
-      console.log(values)
-    //   const BankingData = TableArray.map((el) => {
-    //     return el.BankingData;
-    //   });
-    //   setTableArray({
-    //     ...TableArray,
-    //     BankingData: [...BankingData, values],
-    //   });
-    //   console.log(TableArray, "SUMBIT");
     },
   });
 

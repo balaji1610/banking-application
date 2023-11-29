@@ -3,13 +3,14 @@ export const ApplicationProps = createContext(null);
 export default function Context({ children }) {
   const [RouterPath, setRouterPath] = useState(null);
   const [ViewGetData, setViewGetData] = useState();
+  const [Getindex, setGetindex] = useState();
   const [TableArray, setTableArray] = useState([
     {
       fistname: "balaji",
       lastname: "A",
       email: "apple@gmail.com",
       mobile: "(908) 041-562",
-      BankingData: [1, 23],
+      BankingData: [],
     },
     {
       fistname: "Banana",
@@ -120,6 +121,8 @@ export default function Context({ children }) {
         setRouterPath,
         ViewGetData,
         setViewGetData,
+        Getindex,
+        setGetindex,
       }}
     >
       {children}

@@ -10,7 +10,6 @@ import { CardActionArea } from "@mui/material";
 
 export default function UserDetailsTab() {
   const { ViewGetData } = useContext(ApplicationProps);
-  console.log(ViewGetData, "ViewGetData");
 
   const { fistname, lastname, email, mobile } = ViewGetData;
   return (
