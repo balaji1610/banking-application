@@ -15,6 +15,7 @@ export default function AddForm({ handleClose, setOpen }) {
       lastname: "",
       email: "",
       mobile: "",
+      BankingData: [],
     },
 
     validationSchema: Yup.object({

@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer, useState } from "react";
 export const ApplicationProps = createContext(null);
 export default function Context({ children }) {
   const [RouterPath, setRouterPath] = useState(null);
+  const [InvokeHook, setInvokeHook] = useState(1);
   const [ViewGetData, setViewGetData] = useState();
   const [Getindex, setGetindex] = useState();
   const [TableArray, setTableArray] = useState([
@@ -10,7 +11,32 @@ export default function Context({ children }) {
       lastname: "A",
       email: "apple@gmail.com",
       mobile: "(908) 041-562",
-      BankingData: [],
+      BankingData: [
+        {
+          accountNumber: "1234567890",
+          accountName: "bff",
+          nickName: "INDIA",
+          Ifsc: "1234",
+        },
+        {
+          accountNumber: "1234567890",
+          accountName: "bff",
+          nickName: "INDIA",
+          Ifsc: "1234",
+        },
+        {
+          accountNumber: "1234567890",
+          accountName: "bff",
+          nickName: "INDIA",
+          Ifsc: "1234",
+        },
+        {
+          accountNumber: "1234567890",
+          accountName: "bff",
+          nickName: "INDIA",
+          Ifsc: "1234",
+        },
+      ],
     },
     {
       fistname: "Banana",
@@ -123,6 +149,8 @@ export default function Context({ children }) {
         setViewGetData,
         Getindex,
         setGetindex,
+        InvokeHook,
+        setInvokeHook,
       }}
     >
       {children}

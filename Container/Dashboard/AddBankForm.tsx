@@ -5,8 +5,15 @@ import * as Yup from "yup";
 import { ApplicationProps } from "../../ContextAPI/Context";
 import { useContext } from "react";
 export default function AddBankForm({ handleClose, setOpen }) {
-  const { TableArray, setTableArray, ViewGetData, setViewGetData, Getindex } =
-    useContext(ApplicationProps);
+  const {
+    TableArray,
+    setTableArray,
+    ViewGetData,
+    setViewGetData,
+    Getindex,
+    InvokeHook,
+    setInvokeHook,
+  } = useContext(ApplicationProps);
 
   const { TextField, Button } = Import_Material;
 
@@ -21,6 +28,7 @@ export default function AddBankForm({ handleClose, setOpen }) {
     });
 
     setTableArray(updatedTableArray);
+    setInvokeHook(InvokeHook + 1);
   };
 
   //Formik

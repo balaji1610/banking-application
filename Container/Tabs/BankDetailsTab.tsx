@@ -3,8 +3,13 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import Model_Comp from "../../components/Model_Comp";
 import AddBankForm from "../Dashboard/AddBankForm";
+import { useContext } from "react";
+import { ApplicationProps } from "../../ContextAPI/Context";
+import BankTable from "./BankTable";
 export default function BankDetailsTab() {
+  //model
   const [AddBankopen, setAddBankOpen] = useState(false);
+  const { TableArray, Getindex, InvokeHook } = useContext(ApplicationProps);
 
   const handleModelOpen = () => {
     setAddBankOpen(true);
@@ -33,6 +38,14 @@ export default function BankDetailsTab() {
           />
         }
       />
+
+      <div>
+        <BankTable
+          bankingArray={TableArray}
+          currentIndex={Getindex}
+          InvokeHook={InvokeHook}
+        />
+      </div>
     </div>
   );
 }
