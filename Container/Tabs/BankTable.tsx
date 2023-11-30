@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Text from "../../components/Text";
-import BankingPageStyle from "../../styles/BankingPageStyle.ts";
+import BankingPageStyle from "../../styles/BankingPageStyle";
 export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
   let getLength = bankingArray[currentIndex].BankingData.length;
 
@@ -86,7 +86,7 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
           </TableContainer>
         </div>
       ) : (
-        <div style={BankingPageStyle.NoRecords}>
+        <div style={BankingPageStyle.NoRecords as React.CSSProperties}>
           <h1>* NO RECORDS *</h1>
         </div>
       )}
