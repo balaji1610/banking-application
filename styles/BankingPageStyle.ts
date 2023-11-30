@@ -14,7 +14,7 @@ const BankingPageStyle = {
     marginLeft: "5px",
   },
   tabStyle: {
-    backgroundColor: "rgb(0 0 0 / 23%)",
+    backgroundColor: "rgb(209 201 201 / 23%)",
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
@@ -31,6 +31,8 @@ const BankingPageStyle = {
     alignItems: "center",
     height: "18rem",
   },
+
+  //userDetails
   UserDetailsTabDev: {
     marginTop: "6rem",
     display: "flex",
@@ -41,19 +43,26 @@ const BankingPageStyle = {
   userDetailsCard1: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "flex-start",
     fontSize: "large",
     paddingBottom: "1rem",
   },
-  //BankDetails Tab
+  userDetailGrid1: {
+    display: "grid",
+    gridTemplateRows: "3rem",
+    gridTemplateColumns: "auto auto",
+    columnGap: "2rem",
+    marginTop: "2px",
+  },
 
   BankDetailsTabDev: {
-    marginTop: "1rem",
+    marginTop: "0rem",
   },
   Addbank: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-end",
+    paddingBottom: "1rem",
   },
 };
 

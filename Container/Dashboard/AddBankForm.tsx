@@ -76,7 +76,7 @@ export default function AddBankForm({ handleClose, setOpen }) {
           <div>
             <TextField
               type="text"
-              placeholder="accountNumber*"
+              placeholder="Account Number*"
               name="accountNumber"
               value={values.accountNumber}
               onChange={formik.handleChange}
@@ -89,7 +89,7 @@ export default function AddBankForm({ handleClose, setOpen }) {
             {" "}
             <TextField
               type="text"
-              placeholder="accountName*"
+              placeholder="Account Name*"
               name="accountName"
               value={values.accountName}
               onChange={handleChange}
@@ -102,7 +102,7 @@ export default function AddBankForm({ handleClose, setOpen }) {
             {" "}
             <TextField
               type="text"
-              placeholder="nickName*"
+              placeholder="Nick Name*"
               name="nickName"
               value={values.nickName}
               onChange={handleChange}
@@ -115,7 +115,7 @@ export default function AddBankForm({ handleClose, setOpen }) {
             {" "}
             <TextField
               type="text"
-              placeholder="Ifsc*"
+              placeholder="IFSC*"
               name="Ifsc"
               value={values.Ifsc}
               onChange={handleChange}

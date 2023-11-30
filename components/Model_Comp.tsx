@@ -6,7 +6,13 @@ import { ModelProps } from "../interfaces/index";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function Model_Comp({ open, handleClose, setOpen, title,component }) {
+export default function Model_Comp({
+  open,
+  handleClose,
+  setOpen,
+  title,
+  component,
+}) {
   //all imports
   const {
     Button,
@@ -42,7 +48,7 @@ export default function Model_Comp({ open, handleClose, setOpen, title,component
             textAlign: "center",
             padding: "19px",
             marginRight: "4px",
-            fontFamily: "'Roboto Mono'",
+            fontFamily: "'Roboto'",
           }}
         >
           <h2>{title}</h2>

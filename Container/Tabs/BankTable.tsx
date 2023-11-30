@@ -13,10 +13,14 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
     <div>
       {getLength >= 1 ? (
         <div>
-          <h1>Table Here</h1>
           <TableContainer
             component={Paper}
-            style={{ height: "22rem", overflow: "scroll", overflowX: "hidden" }}
+            style={{
+              minHeight: "10rem",
+              maxHeight: "15rem",
+              overflow: "scroll",
+              overflowX: "hidden",
+            }}
           >
             <Table
               stickyHeader
@@ -37,11 +41,10 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell>AccountNumber </TableCell>
-                  <TableCell>AccountName</TableCell>
-
-                  <TableCell>NickName</TableCell>
-                  <TableCell>Ifsc</TableCell>
+                  <TableCell> ACCOUNT NUMBER </TableCell>
+                  <TableCell>ACCOUNT NAME</TableCell>
+                  <TableCell>NICK NAME</TableCell>
+                  <TableCell>IFSC</TableCell>
                 </TableRow>
               </TableHead>{" "}
               <TableBody>
