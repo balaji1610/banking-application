@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&family=Roboto:ital,wght@0,300;0,400;1,400&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&family=Roboto+Mono:wght@200&family=Roboto:ital@0;1&display=swap");
 .login_font {
   font-family: "Roboto Mono", monospace;
+}
+.tab_label_font {
+  font-family: "Roboto", sans-serif;
+}
+.userCard_font {
+  font-family: "Open Sans", sans-serif;
 }

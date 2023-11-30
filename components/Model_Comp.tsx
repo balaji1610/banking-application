@@ -5,7 +5,7 @@ import { ModelProps } from "../interfaces/index";
 // import AddFrom from "../Container/Dashboard/AddForm";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-
+import Text from "./Text";
 export default function Model_Comp({
   open,
   handleClose,
@@ -51,7 +51,7 @@ export default function Model_Comp({
             fontFamily: "'Roboto'",
           }}
         >
-          <h2>{title}</h2>
+          <h2 style={{ fontFamily: "'Roboto'" }}>{title}</h2>
         </DialogTitle>
         <DialogActions>
           <Grid container xs={12}>

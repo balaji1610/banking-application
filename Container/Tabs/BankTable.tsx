@@ -6,6 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Text from "../../components/Text";
+import BankingPageStyle from "../../styles/BankingPageStyle.ts";
 export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
   let getLength = bankingArray[currentIndex].BankingData.length;
 
@@ -41,19 +43,42 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell> ACCOUNT NUMBER </TableCell>
-                  <TableCell>ACCOUNT NAME</TableCell>
-                  <TableCell>NICK NAME</TableCell>
-                  <TableCell>IFSC</TableCell>
+                  <TableCell>
+                    <Text label="ACCOUNT NUMBER" variant="h6" />{" "}
+                  </TableCell>
+                  <TableCell>
+                    {" "}
+                    <Text label="ACCOUNT NAME" variant="h6" />
+                  </TableCell>
+                  <TableCell>
+                    {" "}
+                    <Text label="NICK NAME" variant="h6" />
+                  </TableCell>
+                  <TableCell>
+                    {" "}
+                    <Text label="IFSC" variant="h6" />
+                  </TableCell>
                 </TableRow>
               </TableHead>{" "}
               <TableBody>
                 {bankingArray[currentIndex].BankingData.map((el, index) => (
                   <TableRow>
-                    <TableCell>{el.accountNumber}</TableCell>
-                    <TableCell>{el.accountName}</TableCell>
-                    <TableCell>{el.nickName}</TableCell>
-                    <TableCell>{el.Ifsc}</TableCell>
+                    <TableCell>
+                      {" "}
+                      <Text label={el.accountNumber} variant="body1" />
+                    </TableCell>
+                    <TableCell>
+                      {" "}
+                      <Text label={el.accountName} variant="body1" />
+                    </TableCell>
+                    <TableCell>
+                      {" "}
+                      <Text label={el.nickName} variant="body1" />
+                    </TableCell>
+                    <TableCell>
+                      {" "}
+                      <Text label={el.Ifsc} variant="body1" />
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -61,8 +86,8 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
           </TableContainer>
         </div>
       ) : (
-        <div>
-          <h1>NO Data</h1>
+        <div style={BankingPageStyle.NoRecords}>
+          <h1>* NO RECORDS *</h1>
         </div>
       )}
     </div>

@@ -7,7 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 import { CardActionArea } from "@mui/material";
-
+import fontStyle from "../../styles/fontStyle.module.css";
 export default function UserDetailsTab() {
   const { ViewGetData } = useContext(ApplicationProps);
 
@@ -40,9 +40,12 @@ export default function UserDetailsTab() {
                         color: "red",
                       }}
                     >
-                      FIRST NAME :
+                      <Typography variant="subtitle1">FIRST NAME :</Typography>
                     </div>
-                    <div>{fistname}</div>
+                    <div>
+                      {" "}
+                      <Typography variant="subtitle1"> {fistname} :</Typography>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -57,9 +60,12 @@ export default function UserDetailsTab() {
                         color: "red",
                       }}
                     >
-                      LAST NAME :
+                      <Typography variant="subtitle1"> LAST NAME :</Typography>
                     </div>
-                    <div>{lastname}</div>
+                    <div>
+                      {" "}
+                      <Typography variant="subtitle1"> {lastname}</Typography>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -77,9 +83,11 @@ export default function UserDetailsTab() {
                         color: "red",
                       }}
                     >
-                      EMAIL :
+                      <Typography variant="subtitle1"> EMAIL :</Typography>
                     </div>
-                    <div>{email}</div>
+                    <div>
+                      <Typography variant="subtitle1"> {email}</Typography>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -94,9 +102,11 @@ export default function UserDetailsTab() {
                         color: "red",
                       }}
                     >
-                      MOBILE :
+                      <Typography variant="subtitle1"> MOBILE :</Typography>
                     </div>
-                    <div>{mobile}</div>
+                    <div>
+                      <Typography variant="subtitle1"> {mobile}</Typography>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -15,3 +15,8 @@ export type ModelProps = {
   handleClose: () => void;
   setOpen?: boolean;
 };
+
+export type TypographyType = {
+  label?: any;
+  variant?: any;
+};

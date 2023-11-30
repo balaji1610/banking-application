@@ -13,6 +13,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import UserDetailsTab from "../Tabs/UserDetailsTab";
 import BankDetailsTab from "../Tabs/BankDetailsTab";
 
+import fontstyle from "../../styles/fontStyle.module.css";
 export default function BankingPage() {
   const { RouterPath, ViewGetData } = useContext(ApplicationProps);
   const [value, setValue] = useState("1");
@@ -52,11 +53,13 @@ export default function BankingPage() {
                 label="User Details"
                 value="1"
                 style={BankingPageStyle.tabLabelStyle}
+                className={fontstyle.tab_label_font}
               />
               <Tab
                 label="Bank Details"
                 value="2"
                 style={BankingPageStyle.tabLabelStyle}
+                className={fontstyle.tab_label_font}
               />
             </TabList>
           </div>

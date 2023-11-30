@@ -1,16 +1,17 @@
 .Addform_Parent {
   display: grid;
-  grid-template-columns: 20rem;
+  grid-template-columns: 18rem;
   grid-template-rows: 3fr 3fr 3fr 3fr 3fr;
   grid-row-gap: 2rem;
-  row-gap: 2rem;
-  margin-left: 61px;
-  padding-top: 48px;
+  grid-row-gap: 2rem;
+
+  margin-left: 17px;
+  padding-top: 39px;
 }
 .cancel_Sumbit_btn {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   /* margin-left: -61px; */
-  margin-right: 67px;
+  margin-right: 8px;
 }

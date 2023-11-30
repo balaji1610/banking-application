@@ -11,7 +11,7 @@ import { useContext, useState, useEffect } from "react";
 import { ApplicationProps } from "../../ContextAPI/Context";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-
+import Text from "../../components/Text";
 export default function BasicTable() {
   const { RouterPath, TableArray, ViewGetData, setViewGetData, setGetindex } =
     useContext(ApplicationProps);

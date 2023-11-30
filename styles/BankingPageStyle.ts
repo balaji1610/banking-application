@@ -64,6 +64,19 @@ const BankingPageStyle = {
     justifyContent: "flex-end",
     paddingBottom: "1rem",
   },
+
+  //NoRecords
+
+  NoRecords: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "20rem",
+    border: "1px solid rgb(0 0 0 / 20%)",
+    backgroundColor: "rgb(204 210 255)",
+    color: "#ff3333d9",
+  },
 };
 
 export default BankingPageStyle;
