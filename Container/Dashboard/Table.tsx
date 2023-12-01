@@ -17,7 +17,9 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-
+import Model_Comp from "../../components/Model_Comp";
+import DepoistForm from "../../Container/Banking/Forms/DepoistForm";
+import WithdrawlForm from "../../Container/Banking/Forms/WithdrawlForm";
 import { ThreeDotMenuEventType } from "../../interfaces/index";
 
 const ITEM_HEIGHT = 48;
@@ -25,18 +27,12 @@ export default function BasicTable() {
   const { RouterPath, TableArray, ViewGetData, setViewGetData, setGetindex } =
     useContext(ApplicationProps);
 
-  // const viewClick = (
-  //   event: React.MouseEvent<HTMLButtonElement>,
-  //   getData: {},
-  //   getIndex
-  // ) => {
-  //   setViewGetData(getData);
-  //   setGetindex(getIndex);
-  // };
-
-  //view menu
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const [DepoistOpen, setDepoistOpen] = useState(false);
+
+  const [WithdrawOpen, setWithdrawOpen] = useState(false);
   const handleClick = (
     event: React.MouseEvent<HTMLElement>,
     getData: {},
@@ -47,105 +43,149 @@ export default function BasicTable() {
 
     setViewGetData(getData);
     setGetindex(getIndex);
-
-    console.log(getData, getIndex, "getData");
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  //Deposit Events
   const depoistModel = () => {
     setAnchorEl(null);
-    alert("depoistModel");
+    setDepoistOpen(true);
   };
 
-  const widthdrawModel = () => {
+  const depoistModelClose = () => {
+    setDepoistOpen(false);
+  };
+
+  //WidthDraw Events
+  const withdrawModel = () => {
     setAnchorEl(null);
-    alert("widthdrawModel");
+    setWithdrawOpen(true);
+  };
+
+  const withdrawModelClose = () => {
+    setAnchorEl(null);
+    setWithdrawOpen(false);
   };
 
   return (
-    <TableContainer
-      component={Paper}
-      style={{ height: "35rem", overflow: "scroll", overflowX: "hidden" }}
-    >
-      <Table
-        stickyHeader
-        sx={{
-          minWidth: 650,
-          border: "2px solid #ffffff",
-          heigh: "10px",
-          "& th": {
-            color: "#ffffff",
-            backgroundColor: "#000000",
-            fontSize: "large",
-            fontWeight: "bold",
-          },
-          "& tr": {
-            fontSize: "15px",
-          },
-        }}
+    <div>
+      <TableContainer
+        component={Paper}
+        style={{ height: "35rem", overflow: "scroll", overflowX: "hidden" }}
       >
-        <TableHead>
-          <TableRow>
-            <TableCell>Fist Name </TableCell>
-            <TableCell>Last Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Mobile</TableCell>
-            <TableCell>Action</TableCell>
-          </TableRow>
-        </TableHead>{" "}
-        <TableBody>
-          {TableArray.map((el, index) => (
+        <Table
+          stickyHeader
+          sx={{
+            minWidth: 650,
+            border: "2px solid #ffffff",
+            heigh: "10px",
+            "& th": {
+              color: "#ffffff",
+              backgroundColor: "#000000",
+              fontSize: "large",
+              fontWeight: "bold",
+            },
+            "& tr": {
+              fontSize: "15px",
+            },
+          }}
+        >
+          <TableHead>
             <TableRow>
-              <TableCell>{el.fistname}</TableCell>
-              <TableCell>{el.lastname}</TableCell>
-              <TableCell>{el.email}</TableCell>
-              <TableCell>{el.mobile}</TableCell>
-              <TableCell>
-                <IconButton
-                  aria-label="more"
-                  id="long-button"
-                  aria-controls={open ? "long-menu" : undefined}
-                  aria-expanded={open ? "true" : undefined}
-                  aria-haspopup="true"
-                  onClick={(e) => handleClick(e, el, index)}
-                >
-                  <MoreVertIcon />
-                </IconButton>
-                <Menu
-                  id="long-menu"
-                  MenuListProps={{
-                    "aria-labelledby": "long-button",
-                  }}
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  PaperProps={{
-                    style: {
-                      maxHeight: ITEM_HEIGHT * 4.5,
-                      width: "20ch",
-                    },
-                  }}
-                >
-                  <MenuItem>
-                    <Link
-                      to={`/login/${RouterPath}/banking`}
-                      style={{
-                        textDecoration: "none",
-                      }}
-                    >
-                      View
-                    </Link>
-                  </MenuItem>
-                  <MenuItem onClick={depoistModel}>Deposit</MenuItem>
-                  <MenuItem onClick={widthdrawModel}>WithDraw</MenuItem>
-                </Menu>
-              </TableCell>
+              <TableCell>Fist Name </TableCell>
+              <TableCell>Last Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Mobile</TableCell>
+              <TableCell>Action</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>{" "}
+          <TableBody>
+            {TableArray.map((el, index) => (
+              <TableRow>
+                <TableCell>{el.fistname}</TableCell>
+                <TableCell>{el.lastname}</TableCell>
+                <TableCell>{el.email}</TableCell>
+                <TableCell>{el.mobile}</TableCell>
+                <TableCell>
+                  <IconButton
+                    aria-label="more"
+                    id="long-button"
+                    aria-controls={open ? "long-menu" : undefined}
+                    aria-expanded={open ? "true" : undefined}
+                    aria-haspopup="true"
+                    onClick={(e) => handleClick(e, el, index)}
+                  >
+                    <MoreVertIcon />
+                  </IconButton>
+                  <Menu
+                    id="long-menu"
+                    MenuListProps={{
+                      "aria-labelledby": "long-button",
+                    }}
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    PaperProps={{
+                      style: {
+                        maxHeight: ITEM_HEIGHT * 4.5,
+                        width: "20ch",
+                      },
+                    }}
+                  >
+                    <MenuItem>
+                      <Link
+                        to={`/login/${RouterPath}/banking`}
+                        style={{
+                          textDecoration: "none",
+                        }}
+                      >
+                        View
+                      </Link>
+                    </MenuItem>
+                    <MenuItem onClick={depoistModel}>Deposit</MenuItem>
+                    <MenuItem onClick={withdrawModel}>WithDraw</MenuItem>
+                  </Menu>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {/* Depoist Model */}
+      <div>
+        {" "}
+        <Model_Comp
+          open={DepoistOpen}
+          setOpen={setDepoistOpen}
+          handleClose={depoistModelClose}
+          title="ADD DEPOIST"
+          component={
+            <DepoistForm
+              setOpen={setDepoistOpen}
+              handleClose={depoistModelClose}
+            />
+          }
+        />
+      </div>
+      <div>
+        <div>
+          <Model_Comp
+            open={WithdrawOpen}
+            setOpen={setWithdrawOpen}
+            handleClose={withdrawModelClose}
+            title="WITHDRAWAL"
+            component={
+              <WithdrawlForm
+                setOpen={setWithdrawOpen}
+                handleClose={withdrawModelClose}
+              />
+            }
+          />
+        </div>
+      </div>
+    </div>
   );
 }
