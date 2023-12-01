@@ -12,17 +12,56 @@ import { ApplicationProps } from "../../ContextAPI/Context";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Text from "../../components/Text";
+
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+
+import { ThreeDotMenuEventType } from "../../interfaces/index";
+
+const ITEM_HEIGHT = 48;
 export default function BasicTable() {
   const { RouterPath, TableArray, ViewGetData, setViewGetData, setGetindex } =
     useContext(ApplicationProps);
 
-  const viewClick = (
-    event: React.MouseEvent<HTMLButtonElement>,
+  // const viewClick = (
+  //   event: React.MouseEvent<HTMLButtonElement>,
+  //   getData: {},
+  //   getIndex
+  // ) => {
+  //   setViewGetData(getData);
+  //   setGetindex(getIndex);
+  // };
+
+  //view menu
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (
+    event: React.MouseEvent<HTMLElement>,
     getData: {},
-    getIndex
+    getIndex: number
   ) => {
+    setAnchorEl(event.currentTarget);
+    event.preventDefault();
+
     setViewGetData(getData);
     setGetindex(getIndex);
+
+    console.log(getData, getIndex, "getData");
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const depoistModel = () => {
+    setAnchorEl(null);
+    alert("depoistModel");
+  };
+
+  const widthdrawModel = () => {
+    setAnchorEl(null);
+    alert("widthdrawModel");
   };
 
   return (
@@ -64,20 +103,44 @@ export default function BasicTable() {
               <TableCell>{el.email}</TableCell>
               <TableCell>{el.mobile}</TableCell>
               <TableCell>
-                <Link
-                  to={`/login/${RouterPath}/banking`}
-                  style={{
-                    textDecoration: "none",
+                <IconButton
+                  aria-label="more"
+                  id="long-button"
+                  aria-controls={open ? "long-menu" : undefined}
+                  aria-expanded={open ? "true" : undefined}
+                  aria-haspopup="true"
+                  onClick={(e) => handleClick(e, el, index)}
+                >
+                  <MoreVertIcon />
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  MenuListProps={{
+                    "aria-labelledby": "long-button",
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                    style: {
+                      maxHeight: ITEM_HEIGHT * 4.5,
+                      width: "20ch",
+                    },
                   }}
                 >
-                  {" "}
-                  <Button
-                    onClick={(e) => viewClick(e, el, index)}
-                    variant="contained"
-                  >
-                    View
-                  </Button>
-                </Link>
+                  <MenuItem>
+                    <Link
+                      to={`/login/${RouterPath}/banking`}
+                      style={{
+                        textDecoration: "none",
+                      }}
+                    >
+                      View
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={depoistModel}>Deposit</MenuItem>
+                  <MenuItem onClick={widthdrawModel}>WithDraw</MenuItem>
+                </Menu>
               </TableCell>
             </TableRow>
           ))}

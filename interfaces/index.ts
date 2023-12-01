@@ -20,3 +20,8 @@ export type TypographyType = {
   label?: any;
   variant?: any;
 };
+
+export type ThreeDotMenuEventType = {
+  getData?: {};
+  getIndex?: number;
+};
