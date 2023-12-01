@@ -21,29 +21,57 @@ import Model_Comp from "../../components/Model_Comp";
 import DepoistForm from "../../Container/Banking/Forms/DepoistForm";
 import WithdrawlForm from "../../Container/Banking/Forms/WithdrawlForm";
 import { ThreeDotMenuEventType } from "../../interfaces/index";
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 const ITEM_HEIGHT = 48;
 export default function BasicTable() {
-  const { RouterPath, TableArray, ViewGetData, setViewGetData, setGetindex } =
-    useContext(ApplicationProps);
-
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-
+  const {
+    RouterPath,
+    TableArray,
+    setTableArray,
+    ViewGetData,
+    setViewGetData,
+    setGetindex,
+    Getindex,
+    SubmitBtninvoke,
+  } = useContext(ApplicationProps);
+  useEffect(() => {
+    TableArray;
+  }, []);
+  useEffect(() => {
+    TableArray;
+  }, [SubmitBtninvoke]);
   const [DepoistOpen, setDepoistOpen] = useState(false);
 
   const [WithdrawOpen, setWithdrawOpen] = useState(false);
+
+  useEffect(() => {
+    let AccountHolder = TableArray.map((elm) => {
+      return elm.BankingData.length >= 1
+        ? { ...elm, accountholder: "Yes" }
+        : elm;
+    });
+    setTableArray(AccountHolder);
+  }, []);
+
+  //accountHolder
+  console.log(TableArray, "TableArra");
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
   const handleClick = (
     event: React.MouseEvent<HTMLElement>,
     getData: {},
     getIndex: number
   ) => {
-    setAnchorEl(event.currentTarget);
     event.preventDefault();
-
+    setAnchorEl(event.currentTarget);
     setViewGetData(getData);
     setGetindex(getIndex);
   };
+  //accountholder, Unaccountholder
+
+  const accountHolderStatus =
+    ViewGetData?.accountholder == "Yes" ? true : false;
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -105,21 +133,16 @@ export default function BasicTable() {
           <TableBody>
             {TableArray.map((el, index) => (
               <TableRow>
-                <TableCell>{el.fistname}</TableCell>
+                <TableCell>
+                  {el.accountholder == "Yes" && (
+                    <AccountCircleIcon fontSize="large" color="primary" />
+                  )}
+                  {el.fistname}
+                </TableCell>
                 <TableCell>{el.lastname}</TableCell>
                 <TableCell>{el.email}</TableCell>
-                <TableCell>{el.mobile}</TableCell>
                 <TableCell>
-                  <IconButton
-                    aria-label="more"
-                    id="long-button"
-                    aria-controls={open ? "long-menu" : undefined}
-                    aria-expanded={open ? "true" : undefined}
-                    aria-haspopup="true"
-                    onClick={(e) => handleClick(e, el, index)}
-                  >
-                    <MoreVertIcon />
-                  </IconButton>
+                  {el.mobile}{" "}
                   <Menu
                     id="long-menu"
                     MenuListProps={{
@@ -135,19 +158,49 @@ export default function BasicTable() {
                       },
                     }}
                   >
-                    <MenuItem>
-                      <Link
-                        to={`/login/${RouterPath}/banking`}
-                        style={{
-                          textDecoration: "none",
-                        }}
-                      >
-                        View
-                      </Link>
-                    </MenuItem>
-                    <MenuItem onClick={depoistModel}>Deposit</MenuItem>
-                    <MenuItem onClick={withdrawModel}>WithDraw</MenuItem>
+                    {accountHolderStatus ? (
+                      <>
+                        <MenuItem>
+                          <Link
+                            to={`/login/${RouterPath}/banking`}
+                            style={{
+                              textDecoration: "none",
+                            }}
+                          >
+                            View
+                          </Link>
+                        </MenuItem>
+                        <MenuItem onClick={depoistModel}>Deposit</MenuItem>
+                        <MenuItem onClick={withdrawModel}>WithDraw</MenuItem>
+                      </>
+                    ) : (
+                      <>
+                        {" "}
+                        <MenuItem>
+                          <Link
+                            to={`/login/${RouterPath}/banking`}
+                            style={{
+                              textDecoration: "none",
+                            }}
+                          >
+                            View
+                          </Link>
+                        </MenuItem>
+                      </>
+                    )}
                   </Menu>
+                </TableCell>
+                <TableCell>
+                  <IconButton
+                    aria-label="more"
+                    id="long-button"
+                    aria-controls={open ? "long-menu" : undefined}
+                    aria-expanded={open ? "true" : undefined}
+                    aria-haspopup="true"
+                    onClick={(e) => handleClick(e, el, index)}
+                  >
+                    <MoreVertIcon />
+                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}

@@ -3,9 +3,10 @@ import Import_Material from "../../utils/Import_Material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ApplicationProps } from "../../ContextAPI/Context";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 export default function AddForm({ handleClose, setOpen }) {
-  const { TableArray, setTableArray } = useContext(ApplicationProps);
+  const { TableArray, setTableArray, SubmitBtninvoke, setSubmitBtninvoke } =
+    useContext(ApplicationProps);
 
   const { TextField, Button } = Import_Material;
   //Formik
@@ -15,6 +16,7 @@ export default function AddForm({ handleClose, setOpen }) {
       lastname: "",
       email: "",
       mobile: "",
+      accountholder: "NO",
       BankingData: [],
     },
 
@@ -46,6 +48,8 @@ export default function AddForm({ handleClose, setOpen }) {
       values.mobile = USAnumber;
 
       setTableArray([values, ...TableArray]);
+
+      setSubmitBtninvoke(SubmitBtninvoke + 1);
       setOpen(false);
     },
   });

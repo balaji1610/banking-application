@@ -3,6 +3,7 @@ export const ApplicationProps = createContext(null);
 export default function Context({ children }) {
   const [RouterPath, setRouterPath] = useState(null);
   const [InvokeHook, setInvokeHook] = useState(1);
+  const [SubmitBtninvoke, setSubmitBtninvoke] = useState(1);
   const [ViewGetData, setViewGetData] = useState();
   const [Getindex, setGetindex] = useState();
   const [TableArray, setTableArray] = useState([
@@ -11,6 +12,8 @@ export default function Context({ children }) {
       lastname: "A",
       email: "apple@gmail.com",
       mobile: "(908) 041-562",
+      accountholder: "NO",
+
       BankingData: [
         {
           accountNumber: "1234567890",
@@ -43,6 +46,8 @@ export default function Context({ children }) {
       lastname: "B",
       email: "Banana@gmail.com",
       mobile: "(908) 041-562",
+      accountholder: "No",
+
       BankingData: [],
     },
     {
@@ -51,6 +56,7 @@ export default function Context({ children }) {
       email: "Mango@gmail.com",
       mobile: "1234567890",
       BankingData: [],
+      accountholder: "No",
     },
     {
       fistname: "apple",
@@ -58,6 +64,7 @@ export default function Context({ children }) {
       email: "apple@gmail.com",
       mobile: "(908) 041-562",
       BankingData: [],
+      accountholder: "No",
     },
   ]);
 
@@ -74,6 +81,8 @@ export default function Context({ children }) {
         setGetindex,
         InvokeHook,
         setInvokeHook,
+        SubmitBtninvoke,
+        setSubmitBtninvoke,
       }}
     >
       {children}
