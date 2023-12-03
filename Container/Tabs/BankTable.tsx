@@ -7,9 +7,32 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Text from "../../components/Text";
+import Button from "@mui/material/Button";
 import BankingPageStyle from "../../styles/BankingPageStyle";
+import Model_Comp from "../../components/Model_Comp";
+import EditBankForm from "./EditBankForm";
 export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
   let getLength = bankingArray[currentIndex].BankingData.length;
+  const [EditBankopen, setEditBankOpen] = useState(false);
+
+  const [EditCustomerindex, setCustomerindex] = useState(-1);
+
+  const [EditCustomerdata, setEditCustomerdata] = useState();
+
+  const EditModel = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    getCustomerindex,
+    getCustomerData
+  ) => {
+    event.preventDefault();
+    setCustomerindex(getCustomerindex);
+    setEditCustomerdata(getCustomerData);
+    setEditBankOpen(true);
+  };
+
+  const handleCloseClick = () => {
+    setEditBankOpen(false);
+  };
 
   return (
     <div>
@@ -60,6 +83,10 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
                   </TableCell>
                   <TableCell>
                     {" "}
+                    <Text label="Edit" variant="h6" />
+                  </TableCell>
+                  <TableCell>
+                    {" "}
                     <Text label="BALANCE" variant="h6" />
                   </TableCell>
                 </TableRow>
@@ -84,6 +111,15 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
                       <Text label={el.Ifsc} variant="body1" />
                     </TableCell>
                     <TableCell>
+                      <Button
+                        onClick={(e) => EditModel(e, index, el)}
+                        variant="contained"
+                        color="error"
+                      >
+                        Edit
+                      </Button>
+                    </TableCell>
+                    <TableCell>
                       {" "}
                       <Text label={el.balance} variant="body1" />
                     </TableCell>
@@ -98,6 +134,24 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
           <h1>* NO RECORDS *</h1>
         </div>
       )}
+
+      <div>
+        {" "}
+        <Model_Comp
+          open={EditBankopen}
+          setOpen={setEditBankOpen}
+          handleClose={handleCloseClick}
+          title="EDIT BANK DETAILS"
+          component={
+            <EditBankForm
+              setOpen={setEditBankOpen}
+              handleClose={handleCloseClick}
+              EditCustomerindex={EditCustomerindex}
+              EditCustomerdata={EditCustomerdata}
+            />
+          }
+        />
+      </div>
     </div>
   );
 }
