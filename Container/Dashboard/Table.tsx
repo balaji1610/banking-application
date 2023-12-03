@@ -54,7 +54,7 @@ export default function BasicTable() {
   }, []);
 
   //accountHolder
-  console.log(TableArray, "TableArra");
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -159,7 +159,7 @@ export default function BasicTable() {
                     }}
                   >
                     {accountHolderStatus ? (
-                      <>
+                      <div>
                         <MenuItem>
                           <Link
                             to={`/login/${RouterPath}/banking`}
@@ -172,9 +172,9 @@ export default function BasicTable() {
                         </MenuItem>
                         <MenuItem onClick={depoistModel}>Deposit</MenuItem>
                         <MenuItem onClick={withdrawModel}>WithDraw</MenuItem>
-                      </>
+                      </div>
                     ) : (
-                      <>
+                      <div>
                         {" "}
                         <MenuItem>
                           <Link
@@ -186,7 +186,7 @@ export default function BasicTable() {
                             View
                           </Link>
                         </MenuItem>
-                      </>
+                      </div>
                     )}
                   </Menu>
                 </TableCell>

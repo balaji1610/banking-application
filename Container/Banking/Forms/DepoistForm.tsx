@@ -3,42 +3,65 @@ import Import_Material from "../../../utils/Import_Material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ApplicationProps } from "../../../ContextAPI/Context";
+import MenuItem from "@mui/material/MenuItem";
+
+import Select from "@mui/material/Select";
 import { useContext } from "react";
 export default function DepoistForm({ setOpen, handleClose }) {
-  const {} = useContext(ApplicationProps);
+  const { Getindex, TableArray, setTableArray } = useContext(ApplicationProps);
 
   const { TextField, Button } = Import_Material;
+
+  const getAccountName = TableArray[Getindex].BankingData?.map((bank) => {
+    return bank.accountName;
+  });
+
+  const getDropdownlabel = getAccountName?.map((value) => {
+    return { value: value, label: value };
+  });
+
   //Formik
   const formik = useFormik({
     initialValues: {
-      fistname: "",
-      lastname: "",
-      email: "",
-      mobile: "",
-      BankingData: [],
+      amount: "",
+      getbankname: "",
+      description: "Depoist",
     },
 
     validationSchema: Yup.object({
-      fistname: Yup.string()
-        .matches(/^[a-zA-Z]+$/, "fistname must only contain letters")
-        .min(2, "Too short")
-        .max(15, "Too long")
-        .required("Required"),
-
-      lastname: Yup.string()
-        .matches(/^[a-zA-Z]+$/, "lastname must only contain letters")
-        .min(1, "Too short")
-        .max(10, "Too long")
-
-        .required("Required"),
-      email: Yup.string().email("Invalid email").required("Required"),
-      mobile: Yup.string()
-        .matches(/^\d{10}$/, "Invalid mobile number")
-        .required("Required"),
+      amount: Yup.string().required("Required"),
+      getbankname: Yup.string().required("Required"),
     }),
 
     onSubmit: (values) => {
+      const { amount, getbankname } = values;
       setOpen(false);
+      const addbalanceAmount = TableArray[Getindex].BankingData.map((el) => {
+        return el.accountName == getbankname
+          ? {
+              ...el,
+              balance: Number(el.balance) + Number(amount),
+              TransactionHistory: [
+                {
+                  depositAmount: amount,
+                  description: "Depoist",
+                  balance: Number(el.balance) + Number(amount),
+                },
+                ...el.TransactionHistory,
+              ],
+            }
+          : { ...el };
+      });
+
+     
+
+      const addUserbalance = TableArray.map((el, index) => {
+        return index == Getindex
+          ? { ...el, BankingData: addbalanceAmount }
+          : { ...el };
+      });
+
+      setTableArray(addUserbalance);
     },
   });
 
@@ -51,54 +74,33 @@ export default function DepoistForm({ setOpen, handleClose }) {
           <div>
             <TextField
               type="text"
-              placeholder="Fistname*"
-              name="fistname"
-              value={values.fistname}
+              placeholder="Depoist Amount*"
+              name="amount"
+              value={values.amount}
               onChange={formik.handleChange}
-              helperText={touched.fistname && formik.errors.fistname}
-              error={touched.fistname && Boolean(errors.fistname)}
+              helperText={touched.amount && formik.errors.amount}
+              error={touched.amount && Boolean(errors.amount)}
               style={{ width: "17rem" }}
             />
           </div>
           <div>
-            {" "}
             <TextField
+              select
               type="text"
-              placeholder="Lastname*"
-              name="lastname"
-              value={values.lastname}
-              onChange={handleChange}
-              helperText={touched.lastname && formik.errors.lastname}
-              error={touched.lastname && Boolean(errors.lastname)}
+              name="getbankname"
+              placeholder="Select Your Bank*"
+              value={values.getbankname}
+              onChange={formik.handleChange}
+              helperText={touched.getbankname && formik.errors.getbankname}
+              error={touched.getbankname && Boolean(errors.getbankname)}
               style={{ width: "17rem" }}
-            />
+            >
+              {getDropdownlabel?.map((elm) => {
+                return <MenuItem value={elm.value}> {elm.label}</MenuItem>;
+              })}
+            </TextField>
           </div>
-          <div>
-            {" "}
-            <TextField
-              type="email"
-              placeholder="Email*"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-              helperText={touched.email && formik.errors.email}
-              error={touched.email && Boolean(errors.email)}
-              style={{ width: "17rem" }}
-            />
-          </div>
-          <div>
-            {" "}
-            <TextField
-              type="text"
-              placeholder="Mobile*"
-              name="mobile"
-              value={values.mobile}
-              onChange={handleChange}
-              helperText={touched.mobile && formik.errors.mobile}
-              error={touched.mobile && Boolean(errors.mobile)}
-              style={{ width: "17rem" }}
-            />
-          </div>
+
           <div className={AddFromStyle.cancel_Sumbit_btn}>
             <div>
               {" "}

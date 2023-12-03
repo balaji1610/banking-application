@@ -58,6 +58,10 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
                     {" "}
                     <Text label="IFSC" variant="h6" />
                   </TableCell>
+                  <TableCell>
+                    {" "}
+                    <Text label="BALANCE" variant="h6" />
+                  </TableCell>
                 </TableRow>
               </TableHead>{" "}
               <TableBody>
@@ -78,6 +82,10 @@ export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
                     <TableCell>
                       {" "}
                       <Text label={el.Ifsc} variant="body1" />
+                    </TableCell>
+                    <TableCell>
+                      {" "}
+                      <Text label={el.balance} variant="body1" />
                     </TableCell>
                   </TableRow>
                 ))}

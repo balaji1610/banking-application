@@ -38,6 +38,8 @@ export default function AddBankForm({ handleClose, setOpen }) {
       accountName: "",
       nickName: "",
       Ifsc: "",
+      balance: 0,
+      TransactionHistory: [],
     },
 
     validationSchema: Yup.object({
