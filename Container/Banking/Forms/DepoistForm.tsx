@@ -23,13 +23,13 @@ export default function DepoistForm({ setOpen, handleClose }) {
   //Formik
   const formik = useFormik({
     initialValues: {
-      amount: "",
+      depositamount: "",
       getbankname: "",
       description: "Depoist",
     },
 
     validationSchema: Yup.object({
-      amount: Yup.string()
+      depositamount: Yup.string()
         .matches(/^[0-9]*$/, "Numbers Only")
         .min(1, "Too short")
         .max(4, "Too long")
@@ -39,18 +39,18 @@ export default function DepoistForm({ setOpen, handleClose }) {
     }),
 
     onSubmit: (values) => {
-      const { amount, getbankname } = values;
+      const { depositamount, getbankname } = values;
       setOpen(false);
       const addbalanceAmount = TableArray[Getindex].BankingData.map((el) => {
         return el.accountName == getbankname
           ? {
               ...el,
-              balance: Number(el.balance) + Number(amount),
+              balance: Number(el.balance) + Number(depositamount),
               TransactionHistory: [
                 {
-                  depositAmount: amount,
+                  depositAmount: depositamount,
                   description: "Depoist",
-                  balance: Number(el.balance) + Number(amount),
+                  balance: Number(el.balance) + Number(depositamount),
                 },
                 ...el.TransactionHistory,
               ],
@@ -78,11 +78,11 @@ export default function DepoistForm({ setOpen, handleClose }) {
             <TextField
               type="text"
               placeholder="Depoist Amount*"
-              name="amount"
-              value={values.amount}
+              name="depositamount"
+              value={values.depositamount}
               onChange={formik.handleChange}
-              helperText={touched.amount && formik.errors.amount}
-              error={touched.amount && Boolean(errors.amount)}
+              helperText={touched.depositamount && formik.errors.depositamount}
+              error={touched.depositamount && Boolean(errors.depositamount)}
               style={{ width: "17rem" }}
             />
           </div>
