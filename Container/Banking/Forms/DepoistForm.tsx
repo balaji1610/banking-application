@@ -29,7 +29,12 @@ export default function DepoistForm({ setOpen, handleClose }) {
     },
 
     validationSchema: Yup.object({
-      amount: Yup.string().required("Required"),
+      amount: Yup.string()
+        .matches(/^[0-9]*$/, "Numbers Only")
+        .min(1, "Too short")
+        .max(4, "Too long")
+        .required("Required"),
+
       getbankname: Yup.string().required("Required"),
     }),
 
@@ -52,8 +57,6 @@ export default function DepoistForm({ setOpen, handleClose }) {
             }
           : { ...el };
       });
-
-     
 
       const addUserbalance = TableArray.map((el, index) => {
         return index == Getindex
