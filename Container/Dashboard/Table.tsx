@@ -54,7 +54,7 @@ export default function BasicTable() {
   }, []);
 
   //accountHolder
-
+  console.log(TableArray, "TableArray");
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
