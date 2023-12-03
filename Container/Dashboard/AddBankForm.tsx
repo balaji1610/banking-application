@@ -3,6 +3,7 @@ import Import_Material from "../../utils/Import_Material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ApplicationProps } from "../../ContextAPI/Context";
+import MenuItem from "@mui/material/MenuItem";
 import { useContext } from "react";
 export default function AddBankForm({ handleClose, setOpen }) {
   const {
@@ -13,6 +14,7 @@ export default function AddBankForm({ handleClose, setOpen }) {
     Getindex,
     InvokeHook,
     setInvokeHook,
+    AccountNames,
   } = useContext(ApplicationProps);
 
   const { TextField, Button } = Import_Material;
@@ -90,6 +92,7 @@ export default function AddBankForm({ handleClose, setOpen }) {
           <div>
             {" "}
             <TextField
+              select
               type="text"
               placeholder="Account Name*"
               name="accountName"
@@ -98,7 +101,12 @@ export default function AddBankForm({ handleClose, setOpen }) {
               helperText={touched.accountName && formik.errors.accountName}
               error={touched.accountName && Boolean(errors.accountName)}
               style={{ width: "17rem" }}
-            />
+            >
+              {" "}
+              {AccountNames?.map((elm) => {
+                return <MenuItem value={elm.value}> {elm.label}</MenuItem>;
+              })}
+            </TextField>
           </div>
           <div>
             {" "}

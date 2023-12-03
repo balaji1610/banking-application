@@ -9,15 +9,7 @@ const Production_Object = [
     BankingData: [
       {
         accountNumber: "1234567890",
-        accountName: "ICICI",
-        nickName: "INDIA",
-        Ifsc: "1234",
-        balance: 0,
-        TransactionHistory: [],
-      },
-      {
-        accountNumber: "1234567890",
-        accountName: "IOB",
+        accountName: "AXIS",
         nickName: "INDIA",
         Ifsc: "1234",
         balance: 0,
@@ -33,7 +25,15 @@ const Production_Object = [
       },
       {
         accountNumber: "1234567890",
-        accountName: "HDFC",
+        accountName: "SBI",
+        nickName: "INDIA",
+        Ifsc: "1234",
+        balance: 0,
+        TransactionHistory: [],
+      },
+      {
+        accountNumber: "1234567890",
+        accountName: "HDFCF",
         nickName: "INDIA",
         Ifsc: "1234",
         balance: 0,

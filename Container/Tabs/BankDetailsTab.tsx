@@ -9,7 +9,8 @@ import BankTable from "./BankTable";
 export default function BankDetailsTab() {
   //model
   const [AddBankopen, setAddBankOpen] = useState(false);
-  const { TableArray, Getindex, InvokeHook } = useContext(ApplicationProps);
+  const { TableArray, Getindex, InvokeHook, AccountNames } =
+    useContext(ApplicationProps);
 
   const handleModelOpen = () => {
     setAddBankOpen(true);

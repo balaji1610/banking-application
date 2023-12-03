@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useState } from "react";
 import Production_Object from "../utils/Production_Object";
+import Bank_details from "../utils/Bank_deatails";
 export const ApplicationProps = createContext(null);
 export default function Context({ children }) {
   const [RouterPath, setRouterPath] = useState(null);
@@ -7,6 +8,7 @@ export default function Context({ children }) {
   const [SubmitBtninvoke, setSubmitBtninvoke] = useState(1);
   const [ViewGetData, setViewGetData] = useState();
   const [Getindex, setGetindex] = useState();
+  const [AccountNames, setAccountNames] = useState(Bank_details);
   const [TableArray, setTableArray] = useState(Production_Object);
 
   return (
@@ -24,6 +26,8 @@ export default function Context({ children }) {
         setInvokeHook,
         SubmitBtninvoke,
         setSubmitBtninvoke,
+        AccountNames,
+        setAccountNames,
       }}
     >
       {children}

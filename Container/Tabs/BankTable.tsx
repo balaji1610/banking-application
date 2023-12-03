@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import BankingPageStyle from "../../styles/BankingPageStyle";
 import Model_Comp from "../../components/Model_Comp";
 import EditBankForm from "./EditBankForm";
+
 export default function BankTable({ bankingArray, currentIndex, InvokeHook }) {
   let getLength = bankingArray[currentIndex].BankingData.length;
   const [EditBankopen, setEditBankOpen] = useState(false);
