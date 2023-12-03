@@ -6,12 +6,14 @@ import { ApplicationProps } from "../../../ContextAPI/Context";
 import MenuItem from "@mui/material/MenuItem";
 
 import Select from "@mui/material/Select";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+
 export default function WithdrawlForm({ setOpen, handleClose }) {
   const { Getindex, TableArray, setTableArray } = useContext(ApplicationProps);
 
   const { TextField, Button } = Import_Material;
 
+  const [Maxbalance, setMaxbalance] = useState(0);
   const getAccountName = TableArray[Getindex].BankingData?.map((bank) => {
     return bank.accountName;
   });
@@ -29,10 +31,10 @@ export default function WithdrawlForm({ setOpen, handleClose }) {
     },
 
     validationSchema: Yup.object({
-      withdrawamount: Yup.string()
-        .matches(/^[0-9]*$/, "Numbers Only")
+      withdrawamount: Yup.number()
+
         .min(1, "Too short")
-        .max(4, "Too long")
+        .max(Maxbalance, "Insufficient balance")
         .required("Required"),
 
       getbankname: Yup.string().required("Required"),
@@ -41,6 +43,8 @@ export default function WithdrawlForm({ setOpen, handleClose }) {
     onSubmit: (values) => {
       const { withdrawamount, getbankname } = values;
       setOpen(false);
+
+
       const addbalanceAmount = TableArray[Getindex].BankingData.map((el) => {
         return el.accountName == getbankname
           ? {
@@ -68,12 +72,50 @@ export default function WithdrawlForm({ setOpen, handleClose }) {
     },
   });
 
-  const { values, handleSubmit, touched, errors, handleChange } = formik;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    const getBank = TableArray[Getindex].BankingData.filter((bank) => {
+      return bank.accountName == value;
+    });
+    const getBalance = getBank.map((el) => {
+      return el.balance;
+    });
+    const getNumber = Number(getBalance.join(""));
+    setMaxbalance(getNumber);
+    formik.setFieldValue(name, value);
+  };
+  const { values, handleSubmit, touched, errors } = formik;
+
   return (
     <div>
       {" "}
       <form onSubmit={handleSubmit}>
         <div className={AddFromStyle.Addform_Parent}>
+          <h1 style={{ color: "red", textAlign: "center" }}>
+            Balance : {Maxbalance}
+          </h1>
+          <div>
+            <TextField
+              select
+              type="text"
+              name="getbankname"
+              placeholder="Select Your Bank*"
+              value={values.getbankname}
+              onChange={(e) => {
+                handleChange(e);
+                formik.handleChange(e);
+              }}
+              // onChange={formik.handleChange}
+              helperText={touched.getbankname && formik.errors.getbankname}
+              error={touched.getbankname && Boolean(errors.getbankname)}
+              style={{ width: "17rem" }}
+            >
+              {getDropdownlabel?.map((elm) => {
+                return <MenuItem value={elm.value}> {elm.label}</MenuItem>;
+              })}
+            </TextField>
+          </div>
           <div>
             <TextField
               type="text"
@@ -87,23 +129,6 @@ export default function WithdrawlForm({ setOpen, handleClose }) {
               error={touched.withdrawamount && Boolean(errors.withdrawamount)}
               style={{ width: "17rem" }}
             />
-          </div>
-          <div>
-            <TextField
-              select
-              type="text"
-              name="getbankname"
-              placeholder="Select Your Bank*"
-              value={values.getbankname}
-              onChange={formik.handleChange}
-              helperText={touched.getbankname && formik.errors.getbankname}
-              error={touched.getbankname && Boolean(errors.getbankname)}
-              style={{ width: "17rem" }}
-            >
-              {getDropdownlabel?.map((elm) => {
-                return <MenuItem value={elm.value}> {elm.label}</MenuItem>;
-              })}
-            </TextField>
           </div>
 
           <div className={AddFromStyle.cancel_Sumbit_btn}>
